@@ -14,10 +14,10 @@ By Terry Wang
 4. `cd` into the directory you want the boardgames folder to be in
 5. to put boardgames folder type this in the console
 
- . . . `git clone <the stuff you copied with no angle brackets yo>`
+ `git clone <the stuff you copied with no angle brackets yo>`
 
 6. Yay you cloned the stuff now if you push, it will be uploaded on github :D
-*7. Make sure to always **`git pull`** before every time you code to get all the latest updates on the code*
+7. Make sure to always **`git pull`** before every time you code to get all the latest updates on the code
  
 ## Switching Branches
 ***DO NOT MODIFY THE MASTER BRANCH OR TERRY WILL KICK YOU FROM THE GITHUB***
@@ -43,10 +43,10 @@ If you wish to merge your branch into master, you need to create a pull request 
 1. After you've set up all the git stuff `cd` into boardgames
 2. You only need to do the following once.
 
- . . . `npm install` or `npm i`
+ `npm install` or `npm i`
 
 3. Every time you want to run the server type this
 
- . . . `ng serve --open`
+ `ng serve --open`
 
 # Hope this helped :metal: :octocat: 
