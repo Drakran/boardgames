@@ -1,17 +1,11 @@
 ﻿# boardgames
 By Terry Wang
 
-## [Angular Setup](https://angular.io/guide/setup-local)
-- Download [Node.js](https://nodejs.org/en/) if you don’t have it installed (npm package manager will be installed with it by default)
-- Go through the steps in Angular Setup lol. (Just do STEP 1)
-- When in doubt, google the whole error
-
-
 ## CLONE BOARDGAMES TO YOUR COMPUTER
 1. Click the green clone or download button
 2. Copy the stuff by clicking that thing on the right
 3. Open terminal/console on your computer
-4. `cd` into the directory you want the boardgames folder to be in
+4. `cd` into your eclipse workspace folder (for 201)
 5. to put boardgames folder type this in the console
 
  `git clone <the stuff you copied with no angle brackets yo>`
@@ -39,16 +33,15 @@ To switch branches, type
 ## Pull Requests
 If you wish to merge your branch into master, you need to create a pull request and get approval from 2 other people.
 
-## Launching angular
-1. After you've set up all the git stuff `cd` into boardgames
-2. You only need to do the following once.
-
- `npm install` or `npm i`
-
-3. Every time you want to run the server type this
-
- `ng serve --open`
 
 # Hope this helped :metal: :octocat: 
 
 ![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
+
+![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
+
+![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
+
+![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
+![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
+
