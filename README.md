@@ -3,7 +3,7 @@ By Terry Wang
 
 ## [Angular Setup](https://angular.io/guide/setup-local)
 - Download [Node.js](https://nodejs.org/en/) if you don’t have it installed (npm package manager will be installed with it by default)
-- Go through the steps in Angular Setup lol. 
+- Go through the steps in Angular Setup lol. (Just do STEP 1)
 - When in doubt, google the whole error
 
 
@@ -50,3 +50,5 @@ If you wish to merge your branch into master, you need to create a pull request 
  `ng serve --open`
 
 # Hope this helped :metal: :octocat: 
+
+![D&D](https://geekandsundry.com/wp-content/uploads/2017/10/CR-table-opening.png)
