@@ -44,8 +44,8 @@
 	<h1 class="orange">Register</h1>
 
 	<form action="Register" method="POST">
-		<div class="username">
-			<label for="exampleInputEmail1">Username</label> <input type="text" name="username" class="form-control"
+		<div class="form-group">
+			<label for="username">Username</label> <input type="text" name="username" class="form-control"
 				id="username" placeholder="Enter username">
 		</div>
 		<div class="form-group">
