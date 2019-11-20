@@ -5,3 +5,26 @@ nav {
 	background-color: #a9d2e9;
 	color: #041835;
 }
+.orange{
+	color: #F59C69; 
+}
+h1{
+	font-family: arial black;
+	font-size: 30;
+	text-align: center;
+}
+.form-group{
+	margin-left: 10%;
+	font-family: arial;
+	font-size: 12;
+	color: white;
+}
+.form-control{
+	width: 80%;
+}
+.btn-primary{
+	margin-left: 10%;
+	background-color: #F59C69;
+	border: none;
+	font-family: arial;
+}
