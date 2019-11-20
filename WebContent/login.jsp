@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 <title>Board Games</title>
 </head>
 <body>
