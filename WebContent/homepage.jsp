@@ -6,7 +6,11 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href="libraries/fontawesome/css/all.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="libraries/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
@@ -27,7 +31,7 @@
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
 			</ul>
-			<ul class="navbar-nav mr-auto" style="margin-right: 0!important;">
+			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
 				<li class="nav-item"><a class="nav-link" href="#"><i
 						class="fas fa-search"></i></a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i

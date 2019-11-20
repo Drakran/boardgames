@@ -1,0 +1,29 @@
+h1 {
+	margin-top: 7%;
+	font-weight: bold;
+	font-size: 30;
+	text-align: center;
+}
+form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	max-width: 800px;
+}
+.form-group {
+	margin-top: 5%;
+	font-size: 12;
+	color: white;
+	
+}
+.btn-primary {
+	background-color: #ffb05f;
+	color: #041835;
+	border: none;
+}
+.btn-primary:hover {
+	background-color: #ff833c;
+}
+.form-btn {
+	margin: 3% 3% 0 0;
+}

@@ -6,11 +6,12 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="libraries/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="styles/form.css">
 <title>Board Games</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
 	    <label for="passwordInput">Password</label>
 	    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
 	  </div>
-	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <button type="submit" class="btn btn-primary form-btn">Submit</button>
 	</form>
 
 	<!-- HTML here  -->
