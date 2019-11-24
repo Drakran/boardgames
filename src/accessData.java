@@ -11,8 +11,10 @@ import java.sql.Statement;
 
 public class accessData {
 	
-	private String cred = "jdbc:mysql://google/boardgame?cloudSqlInstance=inner-precept-256219:us-central1:sql-db-1&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=root&password=csci201";
-
+	private String cred = "jdbc:mysql://google/boardgames?cloudSqlInstance="
+			+ "cobalt-deck-255423:us-central1:boardgame&"
+			+ "socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false"
+			+ "&user=username&password=password";
 	private Connection conn = null;
 	private Statement st = null;
 	private ResultSet rs = null;
@@ -27,7 +29,7 @@ public class accessData {
     	int userStatus = 0;
     	try {
     		//Check if username exists
-    		PreparedStatement usernameExist = conn.prepareStatement("select username from users "
+    		PreparedStatement usernameExist = conn.prepareStatement("select username from Users "
     				+ "where username = ?");
     		usernameExist.setString(1, user.getUsername());
     		rs = usernameExist.executeQuery();
@@ -37,7 +39,7 @@ public class accessData {
     		}
     		
     		//Check if password exist
-    		PreparedStatement userCorrect = conn.prepareStatement("select username,password from users "
+    		PreparedStatement userCorrect = conn.prepareStatement("select username,password from Users "
     				+ "where username = ? and password = ?");
     		userCorrect.setString(1, user.getUsername());
     		userCorrect.setString(2, user.getPassword());
@@ -79,8 +81,8 @@ public class accessData {
     		}
     		
     		//Check if username exists
-    		PreparedStatement usernameExist = conn.prepareStatement("select username from users "
-    				+ " where username = ?");
+    		PreparedStatement usernameExist = conn.prepareStatement("select username from User "
+    				+ "where username = ?");
     		usernameExist.setString(1, user.getUsername());
     		rs = usernameExist.executeQuery();
     		//rs.next is true if there is a user with the name
@@ -99,8 +101,8 @@ public class accessData {
     		System.out.println(cPassword);
     		
     		//Insert into
-    		PreparedStatement userInsert = conn.prepareStatement("Insert into users(username,password)"
-    				+ " values (?,?)");
+    		PreparedStatement userInsert = conn.prepareStatement("Insert into Users(username,password)"
+    				+ "values (?,?)");
     		userInsert.setString(1, user.getUsername());
     		userInsert.setString(2, user.getPassword());
     		int affect = userInsert.executeUpdate();
