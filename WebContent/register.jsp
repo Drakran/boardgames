@@ -15,8 +15,13 @@
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/form.css">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
+
+<% 
+	String errorMessage = (String)session.getAttribute("registerError");
+%>
+
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light">
@@ -60,6 +65,7 @@
 		</div>
 		<button type="submit" class="btn btn-primary form-btn">Register</button>
 		<button type="reset" class="btn btn-secondary form-btn">Reset</button>
+		<%= errorMessage!=null ? errorMessage : "" %>
 	</form>
 
 	<!-- HTML here  -->
