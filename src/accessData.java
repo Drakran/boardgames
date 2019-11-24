@@ -121,8 +121,8 @@ public class accessData {
     		//Userstatus should default to 2 here
     		String ownurl = "https://www.boardgamegeek.com/xmlapi2/collection?username=" + user.getUsername()+"&subtype=boardgame&own=1";
     		String wishurl = "https://www.boardgamegeek.com/xmlapi2/collection?username=" + user.getUsername()+"&subtype=boardgame&wishlist=1";
-    		PreparedStatement ownInsert = conn.prepareStatement("Insert into games(gameName, imgLink values (?,?)");
-    		PreparedStatement wishInsert = conn.prepareStatement("Insert into games(gameName, imgLink values (?,?)");
+    		PreparedStatement ownInsert = conn.prepareStatement("Insert into games(gameName, imgLink) values (?,?)");
+    		PreparedStatement wishInsert = conn.prepareStatement("Insert into games(gameName, imgLink) values (?,?)");
     		String xmlString = null;
     		try {
     			xmlString = createXMLStringFromURL(ownurl);
