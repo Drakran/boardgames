@@ -14,6 +14,11 @@
 <link rel="stylesheet" type="text/css" href="styles/form.css">
 <title>Board Games</title>
 </head>
+
+<% 
+	String errorMessage = (String)request.getAttribute("loginError");
+%>
+
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="homepage.jsp">LOGO</a>
@@ -43,13 +48,13 @@
 	  <div class="form-group">
 	    <label for="username">Username</label>
 	    <input type="username" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
-	    <small id="usernameHelp" class="form-text text-muted">Please enter a username.</small>
 	  </div>
 	  <div class="form-group">
 	    <label for="password">Password</label>
 	    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
 	  </div>
 	  <button type="submit" class="btn btn-primary form-btn">Submit</button>
+	  <%= errorMessage!=null ? errorMessage : "" %>
 	</form>
 
 	<!-- HTML here  -->
