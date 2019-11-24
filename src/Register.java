@@ -37,6 +37,7 @@ public class Register extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String cPassword = request.getParameter("cPassword");
+		System.out.println(username + password + cPassword);
 		User user = new User(username,password);
 		accessData access = new accessData();
 		int userExist = access.registerUser(user, cPassword);
@@ -45,7 +46,7 @@ public class Register extends HttpServlet {
 		}else if (userExist == 1) {
 			registerError = "The passwords don't match partner";
 		}else if (userExist == 2) {
-			forwardUrl = "/homePage.jsp";
+			forwardUrl = "/homepage.jsp";
 			session.setAttribute("connected", "true");
 			session.setAttribute("username", username);
 		}else if(userExist == 3) {
