@@ -6,14 +6,15 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="libraries/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styles/form.css">
+<title>Board Games</title>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="homepage.jsp">LOGO</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -35,6 +36,21 @@
 			</ul>
 		</div>
 	</nav>
+	<br><br>
+	<h1 class="orange">Login</h1>	
+
+	<form>
+	  <div class="form-group">
+	    <label for="usernameInput">Username</label>
+	    <input type="username" class="form-control" id="usernameInput" aria-describedby="usernameHelp" placeholder="Enter username">
+	    <small id="usernameHelp" class="form-text text-muted">Please enter a username.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="passwordInput">Password</label>
+	    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
+	  </div>
+	  <button type="submit" class="btn btn-primary form-btn">Submit</button>
+	</form>
 
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>

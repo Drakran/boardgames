@@ -1,7 +1,11 @@
 body {
 	background-color: #041835;
+	font-family: 'Montserrat', sans-serif;
 }
 nav {
 	background-color: #a9d2e9;
 	color: #041835;
+}
+.orange {
+	color: #ffb05f;
 }
