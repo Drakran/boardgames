@@ -19,11 +19,10 @@
 </head>
 
 <% 
-	String errorMessage = (String)session.getAttribute("registerError");
+	String errorMessage = (String)request.getAttribute("registerError");
 %>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="homepage.jsp">LOGO</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"

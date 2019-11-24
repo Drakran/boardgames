@@ -16,7 +16,7 @@
 </head>
 
 <% 
-	String errorMessage = (String)session.getAttribute("loginError");
+	String errorMessage = (String)request.getAttribute("loginError");
 %>
 
 <body>
@@ -47,9 +47,7 @@
 	<form action="Login" method="GET">
 	  <div class="form-group">
 	    <label for="username">Username</label>
-
 	    <input type="username" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
-	    <small id="usernameHelp" class="form-text text-muted">Please enter a username.</small>
 	  </div>
 	  <div class="form-group">
 	    <label for="password">Password</label>
