@@ -65,6 +65,7 @@ public class accessData {
 				getUser.setString(1, user.getUsername());
 				getUser.setString(2, user.getPassword());
 				rs = getUser.executeQuery();
+				rs.next();
 				user.setID(rs.getInt("userID"));
 				// Userstatus should default to 2 here
 				String ownurl = "https://www.boardgamegeek.com/xmlapi2/collection?username=" + user.getUsername()
@@ -96,6 +97,7 @@ public class accessData {
 							gameInsert.executeUpdate();
 						}
 						rs = findBG.executeQuery();
+						rs.next();
 						int boardID = rs.getInt("gameID");
 						PreparedStatement ownSearch = conn
 								.prepareStatement("SELECT * from owned WHERE userID = ? AND gameID = ?");
@@ -134,6 +136,7 @@ public class accessData {
 							gameInsert.executeUpdate();
 						}
 						rs = findBG.executeQuery();
+						rs.next();
 						int boardID = rs.getInt("gameID");
 						PreparedStatement ownSearch = conn
 								.prepareStatement("SELECT * from owned WHERE userID = ? AND gameID = ?");
