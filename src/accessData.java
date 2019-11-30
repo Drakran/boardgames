@@ -247,7 +247,7 @@ public class accessData {
 							.prepareStatement("SELECT * from owned WHERE userID = ? AND gameID = ?");
 					ownSearch.setInt(1, user.getID());
 					ownSearch.setInt(2, boardID);
-					rs = findBG.executeQuery();
+					rs = ownSearch.executeQuery();
 					if (rs.next() == false) {
 						PreparedStatement addOwned = conn
 								.prepareStatement("INSERT into owned(userID, gameID) values(?,?)");
@@ -266,7 +266,7 @@ public class accessData {
 			}
 			Document doc2 = convertStringToXMLDocument(xmlString);
 			doc2.getDocumentElement().normalize();
-			NodeList nList2 = doc.getElementsByTagName("item");
+			NodeList nList2 = doc2.getElementsByTagName("item");
 			for (int i = 0; i < nList2.getLength(); i++) {
 				Node n = nList2.item(i);
 				if (n.getNodeType() == Node.ELEMENT_NODE) {
@@ -281,11 +281,11 @@ public class accessData {
 					}
 					rs = findBG.executeQuery();
 					int boardID = rs.getInt("gameID");
-					PreparedStatement ownSearch = conn
-							.prepareStatement("SELECT * from owned WHERE userID = ? AND gameID = ?");
-					ownSearch.setInt(1, user.getID());
-					ownSearch.setInt(2, boardID);
-					rs = findBG.executeQuery();
+					PreparedStatement wishSearch = conn
+							.prepareStatement("SELECT * wish owned WHERE userID = ? AND gameID = ?");
+					wishSearch.setInt(1, user.getID());
+					wishSearch.setInt(2, boardID);
+					rs = wishSearch.executeQuery();
 					if (rs.next() == false) {
 						PreparedStatement addWish = conn
 								.prepareStatement("INSERT into wish(userID, gameID) values(?,?)");
