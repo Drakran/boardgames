@@ -12,15 +12,16 @@ public class Meet {
 	
 	private int meetupID, gameID, creatorID, capacity, currPlayers;
 	private String location;
-	private Timestamp meetTime;
+	private String meetTime;
 	private String frequency;
+	private String description;
 	
 	public Meet() {
 		
 	}
 
 	public Meet(int meetupID, int gameID, int creatorID, int capacity, int currPlayers, String location,
-			Timestamp meetTime, String frequency) {
+			String meetTime, String frequency, String description) {
 		super();
 		this.meetupID = meetupID;
 		this.gameID = gameID;
@@ -30,6 +31,7 @@ public class Meet {
 		this.location = location;
 		this.meetTime = meetTime;
 		this.frequency = frequency;
+		this.description = description;
 	}
 	
 }

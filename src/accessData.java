@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -304,6 +305,20 @@ public class accessData {
 			close();
 		}
 		return userStatus;
+	}
+	
+	/**
+	 * 
+	 */
+	public void createMeetup() {
+		open();
+		close();
+	}
+	
+	public List<Meet> getMeetupResults(User user) {
+		//Select all meetups that have a join statement with wish and gameID of meetup
+		List<Meet> meets = null;
+		return meets;
 	}
 
 	// Standard Open connection method
