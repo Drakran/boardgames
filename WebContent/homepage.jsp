@@ -14,10 +14,9 @@
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
-<title>Insert title here</title>
+<title>Board Game Tinder</title>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="#">LOGO</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,7 +38,27 @@
 			</ul>
 		</div>
 	</nav>
-
+	<div class="text-center mt-20">
+	<h1>BOARD GAME TINDER</h1>
+	<p>Make new friends with people who enjoy playing board games!</p>
+	<p>Learn to play a new game with a welcoming community of friends</p>
+	<%
+			if(session != null) {
+			
+			String username = (String)session.getAttribute("username");
+			if(username != null && !username.isEmpty()) {
+	%>
+	<div class = "mt-5 mb-5">
+		<a class="btn btn-primary btn-20 btn-solid" href="#" role="button">CREATE</a>
+		<a class="btn btn-outline-primary btn-20 btn-hollow" href="#" role="button">JOIN</a>
+	</div>
+	<%
+			}
+		}
+	%>
+	<h1>ALL EXISTING MEETUPS</h1>
+	<p>TODO</p>
+	</div>
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
 	<script src="libraries/bootstrap/js/bootstrap.min.js"></script>

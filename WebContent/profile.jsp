@@ -14,10 +14,17 @@
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
-<title>Insert title here</title>
+<<<<<<< HEAD
+<link rel="stylesheet" type="text/css" href="styles/form.css">
+<title>Profile</title>
 </head>
-<body>
 
+
+
+<body>
+<%
+	String username = (String)session.getAttribute("username");
+%>
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="homepage.jsp">LOGO</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,6 +46,9 @@
 			</ul>
 		</div>
 	</nav>
+
+	<h1 class="orange"><%= username %>'s Profile</h1>	
+	<h2 class="orange">Email</h2>
 
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
