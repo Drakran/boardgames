@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
  * The User will store the User
  * 
@@ -12,6 +14,11 @@ public class User {
 	private String username;
 	private String password;
 	private int id;
+	private List<Meet> meetups;
+	private List<Game> owned;
+	private List<Game> wish;
+
+
 	public User() {
 		
 	}
@@ -46,6 +53,39 @@ public class User {
 	}
 	public void setID(int id) {
 		this.id = id;
+	}
+	public List<Meet> getMeetups() {
+		return meetups;
+	}
+
+	public void setMeetups(List<Meet> meetups) {
+		this.meetups = meetups;
+	}
+
+	public List<Game> getOwned() {
+		return owned;
+	}
+
+	public void setOwned(List<Game> owned) {
+		this.owned = owned;
+	}
+
+	public List<Game> getWish() {
+		return wish;
+	}
+
+	public void setWish(List<Game> wish) {
+		this.wish = wish;
+	}
+
+	//Adds a wishlist string to wish
+	public void addWish(Game wishGame) {
+		wish.add(wishGame);
+	}
+	
+	//Adds an owned game to owned
+	public void addOwned(Game ownedGame) {
+		owned.add(ownedGame);
 	}
 
 }
