@@ -363,6 +363,7 @@ public class accessData {
 		}
 	}
 
+	//Converts string to xml
 	private static Document convertStringToXMLDocument(String xmlString) {
 		// Parser that produces DOM object trees from XML content
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
