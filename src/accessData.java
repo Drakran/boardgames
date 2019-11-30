@@ -32,6 +32,7 @@ public class accessData {
 	private Statement st = null;
 	private ResultSet rs = null;
 
+	//Validates the user mate
 	public int validateUser(User user) {
 		open();
 		/*
