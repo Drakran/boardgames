@@ -40,6 +40,7 @@ public class createMeetup extends HttpServlet {
 		String description = request.getParameter("description");
 		String location = request.getParameter("location");
 		accessData access = new accessData();
+	
 		
 		
 		request.setAttribute("createMeetupError", createMeetupError);
