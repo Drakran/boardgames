@@ -406,7 +406,7 @@ public class accessData {
 			// make sql string
 			String sql = "SELECT * FROM meetups WHERE 1 = 1";
 			for(Game game : wish) {
-				sql += " AND gameID = " + game.getGameID();
+				sql += " OR gameID = " + game.getGameID();
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);

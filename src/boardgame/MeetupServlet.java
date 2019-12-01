@@ -2,6 +2,7 @@ package boardgame;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,12 +47,14 @@ public class MeetupServlet extends HttpServlet {
 		else {
 			//method to call meetups
 			User user = (User)session.getAttribute("userObject");
-			if(access.getMeetupResults(user) == null) {
+			List<Meet> temp = access.getMeetupResults(user);
+			if(temp== null) {
 				System.out.println("servlet sepcific results null");
 			}
 			else {
 				System.out.println("servlet specific result not null");
 			}
+			System.out.println(temp.size());
 			request.setAttribute("meetupArray", access.getMeetupResults(user));
 		}
 		request.setAttribute("createMeetupError", createMeetupError);
