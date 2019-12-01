@@ -406,7 +406,8 @@ public class accessData {
 			// make sql string
 			String sql = "SELECT * FROM meetups";
 			
-			if (!wish.empty()) {
+			if (!wish.isEmpty()) {
+				sql += " WHERE 1 = 2"
 				for(Game game : wish) {
 					sql += " OR gameID = " + game.getGameID();
 				}
