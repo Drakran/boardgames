@@ -179,7 +179,7 @@ public class accessData {
 						String gameName = otherOtherRS.getString("gameName");
 						PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
 						findCreator.setInt(1, otherRS.getInt("creatorID"));
-						otherOtherRS = findName.executeQuery();
+						otherOtherRS = findCreator.executeQuery();
 						otherOtherRS.next();
 						String creatorName = otherOtherRS.getString("username");
 						Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
