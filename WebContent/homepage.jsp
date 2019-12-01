@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/form.css">
 <title>Board Game Tinder</title>
 
 <script>
@@ -67,10 +68,19 @@
 	<% 
 		if(list != null) {
 		int rows = list.size();
+		System.out.println("num of meetups: " + rows);
 		if(rows > 10) { rows =10; }
 		for(int i = 0; i < rows; i++) {
 		%>	 
-	<p><%=list.get(i)%></p>
+	<div class="meetupBlock" align = "center" style="text-align: center;">
+		<% Meet meet = list.get(i); %>
+		<p><%=meet.getGameName()%></p>
+		<p><i class="fas fa-user"></i><%=meet.getCreatorUsername()%></p>
+		<a class="btn btn-secondary btn-20" href="#" role="button">JOIN</a>
+		<% if(i!=rows-1) { %>
+		<hr>
+		<% } %>
+	</div>
 
 	<% 		}
 		} else {
