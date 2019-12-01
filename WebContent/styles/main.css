@@ -19,6 +19,17 @@ p {
 	color: #a9d2e9;
 }
 
+.tableHead{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	color: white;
+}
+
+.tableBody{
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+}
+
 .btn-20 {
 	width: 20vw;
 }
