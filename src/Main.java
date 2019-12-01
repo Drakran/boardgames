@@ -10,6 +10,7 @@ import com.google.cloud.storage.StorageOptions;
 
 public class Main {
 	public static void main(String [] args) throws IOException {
+		System.out.println("Hi");
 		Storage storage = (Storage) StorageOptions.getDefaultInstance().getService();
 		}
 }
