@@ -1,8 +1,6 @@
 package boardgame;
 
-
 import java.io.IOException;
-import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class createMeetup
+ * Servlet implementation class JoinMeetup
  */
-@WebServlet("/createMeetup")
-public class createMeetup extends HttpServlet {
+@WebServlet("/JoinMeetup")
+public class JoinMeetup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public createMeetup() {
+    public JoinMeetup() {
         super();
-        
         // TODO Auto-generated constructor stub
     }
+
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -34,20 +32,14 @@ public class createMeetup extends HttpServlet {
 		HttpSession session = request.getSession();
 		System.out.println("print1: "+request.getSession().getId());
 		String forwardUrl = "/MeetupServlet";
-		String gameName = request.getParameter("gameName");
-		String meetTime = request.getParameter("meetTime");
-		String frequency = request.getParameter("frequency");
-		int capacity = Integer.parseInt(request.getParameter("capacity"));
+		String gameID = request.getParameter("gameID");
 		String location = request.getParameter("location");
 		accessData access = new accessData();
 		User user = (User) session.getAttribute("userObject");
-		access.createMeetup(user, gameName, capacity, location, meetTime, frequency);
-		request.setAttribute("createMeetupError", createMeetupError);
-		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
-        dispatch.forward(request, response);
+//		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
+//        dispatch.forward(request, response);
 		
 	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
