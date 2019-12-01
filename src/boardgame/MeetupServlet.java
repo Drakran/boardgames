@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Meetup
  */
-@WebServlet("/Meetup")
+@WebServlet("/MeetupServlet")
 public class MeetupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,6 +35,12 @@ public class MeetupServlet extends HttpServlet {
 		String username = (String) session.getAttribute("username");
 		accessData access = new accessData();
 		if(username == null || username == "") {
+			if(access.getAllMeetups() == null) {
+				System.out.println("servlet null");
+			}
+			else {
+				System.out.println("servlet not null");
+			}
 			request.setAttribute("meetupArray", access.getAllMeetups());
 		}
 		else {

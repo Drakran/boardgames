@@ -17,10 +17,7 @@
 <title>Board Game Tinder</title>
 
 <script>
-	$.ajax({
-		url: "MeetupServlet",
-		method: "GET"
-	})
+
 </script>
 
 <%
@@ -76,7 +73,11 @@
 	<p><%=list.get(i)%></p>
 
 	<% 		}
-		} %>
+		} else {
+		System.out.println("null");
+		}
+			%>
+		
 	</div>
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
