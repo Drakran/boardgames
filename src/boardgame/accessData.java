@@ -344,6 +344,7 @@ public class accessData {
 			insertSQL.setString(3, location);
 			insertSQL.setString(4, meetTime);
 			insertSQL.setString(5, frequency);
+			insertSQL.setString(6, creatorID);
 			insertSQL.execute();
 			
 		} catch (SQLException e) {
