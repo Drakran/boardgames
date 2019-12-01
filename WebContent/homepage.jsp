@@ -69,15 +69,15 @@
 <script type="text/javascript">
 	function meetupJoin(meetupID) {
 		meetupID = meetupID.replace("meetup", "");
-		alert(meetupID);
 		$.ajax({
 			method: "GET",
 			url: "JoinMeetup",
 			data: { id: meetupID}
-		}).success(function(data){
+		})
+		.success(function(data){
 			console.log("hi");
-			})
-		};
+			});
+		}
 </script>
 
 	<% 
@@ -108,7 +108,7 @@
 		
 	</div>
 	<!-- HTML here  -->
-	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="libraries/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

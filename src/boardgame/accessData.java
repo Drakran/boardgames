@@ -170,6 +170,7 @@ public class accessData {
 					findMeetup.setInt(1,rs.getInt("meetupID"));
 					otherRS = findMeetup.executeQuery();
 					while(otherRS.next()) {
+						System.out.println("test inside accessData meetup");
 						ResultSet otherOtherRS; 
 						PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
 						findName.setInt(1, otherRS.getInt("gameID"));
@@ -394,6 +395,7 @@ public class accessData {
 	}
 	
 	public void joinMeetup(User user, int meetupID) {
+		open();
 		try {
 			PreparedStatement joinSQL = conn.prepareStatement("INSERT INTO usersMeetup(meetupID,userID) VALUES(?,?)");
 			joinSQL.setInt(1,meetupID);
@@ -402,6 +404,8 @@ public class accessData {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 
 	}
