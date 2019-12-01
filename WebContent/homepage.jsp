@@ -25,6 +25,11 @@
 
 <%
 	List<Meet> list = (ArrayList<Meet>) request.getAttribute("meetupArray");
+
+	String username = null;
+	if(session != null) {
+		username = (String)session.getAttribute("username");
+	}
 %>
 
 </head>
@@ -40,7 +45,6 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="homepage.jsp">Home </a></li>
-				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
 				<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
@@ -53,17 +57,13 @@
 	<p>Make new friends with people who enjoy playing board games!</p>
 	<p>Learn to play a new game with a welcoming community of friends</p>
 	<%
-			if(session != null) {
-			
-			String username = (String)session.getAttribute("username");
-			if(username != null && !username.isEmpty()) {
+		if(username != null && !username.isEmpty()) {
 	%>
 	<div class = "mt-5 mb-5">
-		<a class="btn btn-primary btn-20 btn-solid" href="#" role="button">CREATE</a>
+		<a class="btn btn-primary btn-20 btn-solid" href="meetup-creation.jsp" role="button">CREATE</a>
 		<a class="btn btn-outline-primary btn-20 btn-hollow" href="#" role="button">JOIN</a>
 	</div>
 	<%
-			}
 		}
 	%>
 	<h1>ALL EXISTING MEETUPS</h1>
