@@ -404,9 +404,13 @@ public class accessData {
 			List<Game> wish = user.getWish();
 			
 			// make sql string
-			String sql = "SELECT * FROM meetups WHERE 1 = 1";
-			for(Game game : wish) {
-				sql += " OR gameID = " + game.getGameID();
+			String sql = "SELECT * FROM meetups";
+			
+			if (!wish.isEmpty()) {
+				sql += " WHERE 1 = 2";
+				for(Game game : wish) {
+					sql += " OR gameID = " + game.getGameID();
+				}
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);
