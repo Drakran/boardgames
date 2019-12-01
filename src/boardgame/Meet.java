@@ -1,3 +1,4 @@
+package boardgame;
 import java.sql.Timestamp;
 
 /**

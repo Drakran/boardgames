@@ -1,6 +1,8 @@
+package boardgame;
 
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,55 +13,39 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class createMeetup
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/createMeetup")
+public class createMeetup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public createMeetup() {
         super();
+        
         // TODO Auto-generated constructor stub
     }
     
-    /**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String registerError = null;
+		String createMeetupError = null;
 		HttpSession session = request.getSession();
-		String forwardUrl = "/register.jsp";
-		//Get all the parameters
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String cPassword = request.getParameter("cPassword");
-		System.out.println(username + password + cPassword);
-		User user = new User(username,password);
+		System.out.println("print1: "+request.getSession().getId());
+		String forwardUrl = "/homepage.jsp";
+		String gameName = request.getParameter("gameName");
+		String meetTime = request.getParameter("meetTime");
+		String frequency = request.getParameter("frequency");
+		String description = request.getParameter("description");
+		String location = request.getParameter("location");
 		accessData access = new accessData();
-		int userExist = access.registerUser(user, cPassword);
-		if(userExist == 0) {
-			registerError = "This username is already taken";
-		}else if (userExist == 1) {
-			registerError = "The passwords don't match partner";
-		}else if (userExist == 2) {
-			forwardUrl = "/homepage.jsp";
-			session.setAttribute("connected", "true");
-			session.setAttribute("username", username);
-		}else if(userExist == 3) {
-			registerError = "No username put";
-		}else if(userExist == 4) {
-			registerError = "No password put";
-		}
-		else {
-			//Shouldn't be here, like the method only returns 0,1,or 2. So probably userExist never set
-		}
-		request.setAttribute("registerError", registerError);
+		
+		
+		request.setAttribute("createMeetupError", createMeetupError);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);
+		
 	}
 
 	/**

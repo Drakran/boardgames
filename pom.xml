@@ -106,7 +106,7 @@
 			</execution>
 		  </executions>
 		  <configuration>
-			<mainClass>Main</mainClass>
+			<mainClass>boardgame.Main</mainClass>
 			<arguments>
 			  <argument>foo</argument>
 			  <argument>bar</argument>

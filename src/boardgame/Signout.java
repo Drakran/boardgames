@@ -1,3 +1,4 @@
+package boardgame;
 
 
 import java.io.IOException;

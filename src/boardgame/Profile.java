@@ -1,3 +1,4 @@
+package boardgame;
 
 
 import java.io.IOException;
@@ -8,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Meetup
+ * Servlet implementation class Profile
  */
-@WebServlet("/Meetup")
-public class Meetup extends HttpServlet {
+@WebServlet("/Profile")
+public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Meetup() {
+    public Profile() {
         super();
         // TODO Auto-generated constructor stub
     }
