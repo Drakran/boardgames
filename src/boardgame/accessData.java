@@ -42,8 +42,6 @@ public class accessData {
 		 * 0 if username doesn't exist 1 if username exist but password wrong 2 if
 		 * correct
 		 */
-		System.out.println("hi");
-		System.out.println(System.getenv("GOOGLE_CREDENTIALS"));
 		int userStatus = 0;
 		try {
 			// Check if username exists

@@ -16,6 +16,7 @@ import com.google.cloud.storage.StorageOptions;
 
 public class Main {
 	public static void main(String [] args) throws IOException {
+		System.out.println("HHIIIIIII");
 		 	Path gcp_key_file = Paths.get(System.getenv("GCP_KEY_FILE"));
 	        Files.deleteIfExists(gcp_key_file);
 	        Files.createFile(gcp_key_file);
