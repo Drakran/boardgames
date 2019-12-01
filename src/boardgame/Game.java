@@ -22,11 +22,11 @@ public class Game {
 		this.gameName = gameName;
 	}
 	
-	public String getGameID() {
+	public int getGameID() {
 		return gameID;
 	}
 
-	public void setGameID(String gameID) {
+	public void setGameID(int gameID) {
 		this.gameID = gameID;
 	}
 }

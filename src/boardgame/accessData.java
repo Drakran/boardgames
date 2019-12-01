@@ -375,7 +375,7 @@ public class accessData {
 			// make sql string
 			String sql = "SELECT * from meetups WHERE 1 = 1";
 			for(Game game : wish) {
-				sql += " AND gameID = " + game.getGameID());
+				sql += " AND gameID = " + game.getGameID();
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);
@@ -390,7 +390,7 @@ public class accessData {
 			String gameName;
 			String username;
 			
-			rs = findGameSQL.executeQuery();
+			rs = findMeetup.executeQuery();
 			
 			while (rs.next()) {
 				 id = rs.getInt("meetupID");
