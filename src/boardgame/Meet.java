@@ -36,6 +36,24 @@ public class Meet {
 		this.gameName = gameName;
 		this.creatorUsername = creatorUsername;
 	}
+	
+
+	public String getGameName() {
+		return gameName;
+	}
+
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
+	}
+
+	public String getCreatorUsername() {
+		return creatorUsername;
+	}
+
+	public void setCreatorUsername(String creatorUsername) {
+		this.creatorUsername = creatorUsername;
+	}
+
 
 	public int getMeetupID() {
 		return meetupID;

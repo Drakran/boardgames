@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "java.util.List, java.util.ArrayList, boardgame.Meet"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/form.css">
-<title>Insert title here</title>
+<title>Create Meetup</title>
 </head>
 <body>
 
@@ -40,6 +40,37 @@
 			</ul>
 		</div>
 	</nav>
+
+	<h1 class="orange">Create Meetup</h1>
+
+	<form action="createMeetup" method="GET">
+		<div class="form-group">
+			<label for="gameName">Game Name</label> <input type="text" name="gameName" class="form-control"
+				id="gameName" placeholder="Enter a game name">
+		</div>
+		<div class="form-group">
+			<label for="meetTime">Meet Time</label> <input
+				type="text" name ="meetTime" class="form-control" id="meetTime"
+				placeholder="Enter a time to meet">
+		</div>
+		<div class="form-group">
+			<label for="frequency">Frequency</label> <input
+				type="text" name ="frequency" class="form-control" id="frequency"
+				placeholder="Enter how often you'd like to meet">
+		</div>
+		<div class="form-group">
+			<label for="description">Description</label> <input
+				type="text" name ="description" class="form-control" id="description"
+				placeholder="Enter a description for this meetup">
+		</div>
+		<div class="form-group">
+			<label for="location">Location</label> <input
+				type="text" name ="location" class="form-control" id="location"
+				placeholder="Enter where you'd like to meet">
+		</div>
+		<button type="submit" class="btn btn-primary form-btn">Create</button>
+		<button type="reset" class="btn btn-secondary form-btn">Reset</button>
+	</form>
 
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
