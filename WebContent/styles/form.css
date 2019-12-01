@@ -14,16 +14,29 @@ form {
 	margin-top: 5%;
 	font-size: 12;
 	color: white;
-	
 }
 .btn-primary {
-	background-color: #ffb05f;
 	color: #041835;
-	border: none;
+	background-color: #a9d2e9;
+	border-color: #a9d2e9;
 }
 .btn-primary:hover {
-	background-color: #ff833c;
+	color: #041835;
+	background-color: #6cb3d9;
+	border-color: #6cb3d9;
 }
+
+.btn-secondary:hover {
+	color: #a9d2e9;
+	border-color: #a9d2e9;
+}
+
+.btn-secondary {
+	color: #a9d2e9;
+	background: transparent;
+	border-color: #a9d2e9;
+}
+
 .form-btn {
 	margin: 3% 3% 0 0;
 }
