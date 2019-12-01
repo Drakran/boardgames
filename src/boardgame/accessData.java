@@ -350,17 +350,17 @@ public class accessData {
 			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID from games WHERE gameName = ?");
 			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
 			PreparedStatement findMeetup = conn.prepareStatement("SELECT meetupID from meetups WHERE gameID = ? AND capacity = ? AND currPlayers = 1 AND location = ? AND meetTime = ? AND frequency = ? AND creatorID = ?");
-			String gameID = "";
+			int gameID = -1;
 
 			// set prepared values, query for info, set result in gameID
 			findGameSQL.setString(1, gameName);
 			rs = findGameSQL.executeQuery();
 			if (rs.next()) {
-				gameID = rs.getString("gameID");
+				gameID = rs.getInt("gameID");
 			}
 			
 			// set prepared values, insert into database
-			insertSQL.setString(1, gameID);
+			insertSQL.setInt(1, gameID);
 			insertSQL.setInt(2, capacity);
 			insertSQL.setString(3, location);
 			insertSQL.setString(4, meetTime);
@@ -369,7 +369,7 @@ public class accessData {
 			insertSQL.execute();
 			
 			// set prepared values, query to get meetupID
-			findMeetup.setString(1, gameID);
+			findMeetup.setInt(1, gameID);
 			findMeetup.setInt(2, capacity);
 			findMeetup.setString(3, location);
 			findMeetup.setString(4, meetTime);
@@ -380,7 +380,7 @@ public class accessData {
 			// create Meet object and add to User's meetups list
 			if (rs.next()) {
 				int id = rs.getInt("meetupID");
-				Meet meet = new Meet(id, Integer.parseInt(gameID), user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
+				Meet meet = new Meet(id, gameID, user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
 				//user add meetup
 				user.addMeet(meet);
 			}
