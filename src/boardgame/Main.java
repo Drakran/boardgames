@@ -24,7 +24,7 @@ public class Main {
 //	       // Files.writeString(gp_keyc_file, System.getenv("GCP_CRED"), StandardOpenOption.WRITE);
 		  // If you don't specify credentials when constructing the client, the client library will
 		  // look for credentials via the environment variable GOOGLE_APPLICATION_CREDENTIALS.
-		  Storage storage = (Storage) StorageOptions.getDefaultInstance().getService();
+		  com.google.cloud.storage.Storage storage = StorageOptions.getDefaultInstance().getService();
 	        
 		}
 }
