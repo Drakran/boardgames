@@ -113,7 +113,10 @@ public class accessData {
 							addOwned.setInt(1, user.getID());
 							addOwned.setInt(2, boardID);
 							addOwned.executeUpdate();
+
 						}
+						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent());
+						user.addOwned(g);
 					}
 				}
 
@@ -153,6 +156,33 @@ public class accessData {
 							addWish.setInt(2, boardID);
 							addWish.executeUpdate();
 						}
+						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent());
+						user.addWish(g);
+					}
+				}
+				PreparedStatement findMeet = conn.prepareStatement("SELECT * from usersMeetup WHERE userID = ?");
+				findMeet.setInt(1,user.getID());
+				rs = findMeet.executeQuery();
+				ResultSet otherRS;
+				while(rs.next()) {
+					PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+					findMeetup.setInt(1,rs.getInt("meetupID"));
+					otherRS = findMeetup.executeQuery();
+					while(otherRS.next()) {
+						ResultSet otherOtherRS; 
+						PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+						findName.setInt(1, otherRS.getInt("gameID"));
+						otherOtherRS = findName.executeQuery();
+						otherOtherRS.next();
+						String gameName = otherOtherRS.getString("gameName");
+						PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+						findCreator.setInt(1, otherRS.getInt("creatorID"));
+						otherOtherRS = findName.executeQuery();
+						otherOtherRS.next();
+						String creatorName = otherOtherRS.getString("username");
+						Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+								,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName);
+						user.addMeet(m);
 					}
 				}
 			}
