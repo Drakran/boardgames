@@ -65,6 +65,21 @@
 		}
 	%>
 	<h1>ALL EXISTING MEETUPS</h1>
+
+<script type="text/javascript">
+	function meetupJoin(meetupID) {
+		meetupID = meetupID.replace("meetup", "");
+		alert(meetupID);
+		$.ajax({
+			method: "GET",
+			url: "JoinMeetup",
+			data: { id: meetupID}
+		}).success(function(data){
+			console.log("hi");
+			})
+		};
+</script>
+
 	<% 
 		if(list != null) {
 		int rows = list.size();
@@ -72,11 +87,14 @@
 		if(rows > 10) { rows =10; }
 		for(int i = 0; i < rows; i++) {
 		%>	 
+
+		
 	<div class="meetupBlock" align = "center" style="text-align: center;">
-		<% Meet meet = list.get(i); %>
+		<% 	Meet meet = list.get(i); 
+			String id = "meetupID" + i; %>
 		<p><%=meet.getGameName()%></p>
 		<p><i class="fas fa-user"></i><%=meet.getCreatorUsername()%></p>
-		<a class="btn btn-secondary btn-20" href="#" role="button">JOIN</a>
+		<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" href="#" role="button" onClick="meetupJoin(this.id)">JOIN</a>
 		<% if(i!=rows-1) { %>
 		<hr>
 		<% } %>
