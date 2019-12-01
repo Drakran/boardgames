@@ -3,13 +3,15 @@ package boardgame;
 public class Game {
 	
 	private String gameName;
+	private int gameID;
 
 	public Game() {
 		
 	}
 	
-	public Game(String game) {
+	public Game(String game, int id) {
 		gameName = game;
+		gameID = id;
 	}
 
 	public String getGameName() {
@@ -18,5 +20,13 @@ public class Game {
 
 	public void setGameName(String gameName) {
 		this.gameName = gameName;
+	}
+	
+	public String getGameID() {
+		return gameID;
+	}
+
+	public void setGameID(String gameID) {
+		this.gameID = gameID;
 	}
 }
