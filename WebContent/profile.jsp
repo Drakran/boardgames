@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "java.util.List, java.util.ArrayList, boardgame.Meet, boardgame.Game"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +18,11 @@
 <title>Profile</title>
 </head>
 
+
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-	<a class="navbar-brand" href="homepage.jsp">
-		<img src="assets/bgt_64.png" alt = "">
-	</a>
+	<a class="navbar-brand" href="homepage.jsp">LOGO</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
 		aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -48,10 +48,47 @@
 		</div>
 <% } else { %>
 	
-
 	<h1 class="orange"><%= username %>'s Profile</h1>	
-	<h2 class="orange">Email</h2>
 
+	<h2 class="orange">My Meetups</h2>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Location</th>
+			<th>Meet Time</th>
+			<th>Frequency</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%
+	List<Meet> meetList = (ArrayList<Meet>) request.getAttribute("meetList");
+	for(int i=0; i<meetList.size(); i++){ %>	
+		<tr>
+			<td><%= meetList.get(i).getGameName()%></td>
+			<td><%= meetList.get(i).getLocation()%></td>
+			<td><%= meetList.get(i).getMeetTime()%></td>
+			<td><%= meetList.get(i).getFrequency()%></td>
+		</tr>
+	<%}%>
+	</tbody>
+
+	<h2 class="orange">My Games</h2>
+	<tbody>
+	<%
+	List<Game> ownList = (ArrayList<Game>)request.getAttribute("ownList");
+	for(int i=0; i<ownList.size(); i++){ %>	
+		<tr><td><%= ownList.get(i).getGameName()%></td></tr>
+	<%}%>
+	</tbody>
+
+	<h2 class="orange">My Wishlist</h2>
+	<tbody>
+	<%
+	List<Game> wishList = (ArrayList<Game>)request.getAttribute("wishList");
+	for(int i=0; i<wishList.size(); i++){ %>	
+		<tr><td><%= wishList.get(i).getGameName()%></td></tr>
+	<%}%>
+	</tbody>
 <% } %>
 
 	<!-- HTML here  -->
