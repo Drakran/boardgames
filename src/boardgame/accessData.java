@@ -320,7 +320,7 @@ public class accessData {
 			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID from games WHERE gameName = ?");
 			PreparedStatement findCreatorSQL = conn.prepareStatement("SELECT userID from games WHERE username = ?");
 			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, 
-									 meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?);
+									 meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
 			String gameID = "";
 			String creatorID = "";
 
