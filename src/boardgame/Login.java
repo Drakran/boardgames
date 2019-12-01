@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
 			loginError = "The password is wrong partner";
 		}else if (userExist == 2) {
 			loginError = "Success";
-			forwardUrl = "/homepage.jsp";
+			forwardUrl = "/MeetupServlet";
 			session.setAttribute("connected", "true");
 			session.setAttribute("username", username);
 			session.setAttribute("ownList", user.getOwned());
