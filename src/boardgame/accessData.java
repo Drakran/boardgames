@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -394,7 +395,7 @@ public class accessData {
 	
 	public List<Meet> getMeetupResults(User user) {
 		//Select all meetups that have a join statement with wish and gameID of meetup
-		List<Meet> meets = null;
+		List<Meet> meets = new ArrayList<>();
 		
 		open();
 		
@@ -417,8 +418,8 @@ public class accessData {
 			String location;
 			String meetTime;
 			String frequency;
-			String gameName;
-			String username;
+			String gameName = "";
+			String username = "";
 			
 			rs = findMeetup.executeQuery();
 			
@@ -463,7 +464,7 @@ public class accessData {
 	
 	public List<Meet> getAllMeetups() {
 		//Select all meetups that have a join statement with wish and gameID of meetup
-		List<Meet> meets = null;
+		List<Meet> meets = new ArrayList<>();
 		
 		open();
 		
@@ -479,8 +480,8 @@ public class accessData {
 			String location;
 			String meetTime;
 			String frequency;
-			String gameName;
-			String username;
+			String gameName = "";
+			String username = "";
 			
 			rs = findMeetup.executeQuery();
 			
