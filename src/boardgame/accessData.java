@@ -27,7 +27,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class accessData {
-
+	//user = root
+	//password = csci201
 	private String cred = "jdbc:mysql://google/boardgame?cloudSqlInstance=inner-precept-256219:us-central1:sql-db-1&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=root&password=csci201";
 
 	private Connection conn = null;
@@ -41,6 +42,8 @@ public class accessData {
 		 * 0 if username doesn't exist 1 if username exist but password wrong 2 if
 		 * correct
 		 */
+		System.out.println("hi");
+		System.out.println(System.getenv("GOOGLE_CREDENTIALS"));
 		int userStatus = 0;
 		try {
 			// Check if username exists
