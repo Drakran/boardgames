@@ -448,16 +448,11 @@ public class accessData {
 				//user add meetup
 				meets.add(meet);
 			}
-			
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		
-		
 		return meets;
 	}
 

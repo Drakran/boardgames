@@ -34,7 +34,7 @@
 		</ul>
 		<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
 			<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
-			<li class="nav-item"><a class="nav-link" href="profile.jsp"><i class="far fa-user"></i></a></li>
+			<li class="nav-item"><a class="nav-link" href="Profile"><i class="far fa-user"></i></a></li>
 		</ul>
 	</div>
 </nav>
