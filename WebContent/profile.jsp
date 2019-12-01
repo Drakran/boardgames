@@ -44,7 +44,7 @@
 %>
 		<div class="mt-5 mb-5">
 			<a class="btn btn-primary btn-20 btn-solid" href="register.jsp" role="button">Sign up</a>
-			<a class="btn btn-secondary btn-20 btn-hollow" href="login.jsp" role="button">Log in</a>
+			<a class="btn btn-secondary btn-20" href="login.jsp" role="button">Log in</a>
 		</div>
 <% } else { %>
 	
