@@ -22,6 +22,7 @@ public class Main {
 	        Files.createFile(gcp_key_file);
 	        String env = System.getenv("GCP_CRED");
 	        Files.write(gcp_key_file, env.getBytes(), StandardOpenOption.WRITE);
+	        //Hopefully it works
 //	       // Files.writeString(gp_keyc_file, System.getenv("GCP_CRED"), StandardOpenOption.WRITE);
 		  // If you don't specify credentials when constructing the client, the client library will
 		  // look for credentials via the environment variable GOOGLE_APPLICATION_CREDENTIALS.
