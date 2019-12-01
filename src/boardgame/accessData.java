@@ -115,7 +115,7 @@ public class accessData {
 							addOwned.executeUpdate();
 
 						}
-						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent());
+						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent(),boardID);
 						user.addOwned(g);
 					}
 				}
@@ -156,7 +156,7 @@ public class accessData {
 							addWish.setInt(2, boardID);
 							addWish.executeUpdate();
 						}
-						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent());
+						Game g = new Game(eElement.getElementsByTagName("name").item(0).getTextContent(),boardID);
 						user.addWish(g);
 					}
 				}
