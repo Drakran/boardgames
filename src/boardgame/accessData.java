@@ -406,10 +406,10 @@ public class accessData {
 				ResultSet rs3 = null;
 				
 				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
-				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM games WHERE gameID = " + userID);
+				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
 				
-				rs2.executeQuery();
-				rs3.executeQuery();
+				rs2 = findGameName.executeQuery();
+				rs3 = findUsername.executeQuery();
 				
 				 gameName = rs2.getString("gameName");
 				 username = rs3.getString("username");
