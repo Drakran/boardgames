@@ -88,5 +88,9 @@ public class User {
 	public void addOwned(Game ownedGame) {
 		owned.add(ownedGame);
 	}
+	
+	public void addMeet(Meet meet) {
+		meetups.add(meet);
+	}
 
 }
