@@ -365,6 +365,69 @@ public class accessData {
 	public List<Meet> getMeetupResults(User user) {
 		//Select all meetups that have a join statement with wish and gameID of meetup
 		List<Meet> meets = null;
+		
+		open();
+		
+		try {
+			// get wish list from user
+			List<Game> wish = user.getWish();
+			
+			// make sql string
+			String sql = "SELECT * from meetups WHERE 1 = 1";
+			for(Game game : wish) {
+				sql += " AND gameID = " + game.getGameID();
+			}
+			
+			PreparedStatement findMeetup = conn.prepareStatement(sql);
+			int id;
+			int gameID;
+			int userID;
+			int capacity;
+			int playerNum;
+			String location;
+			String meetTime;
+			String frequency;
+			String gameName;
+			String username;
+			
+			rs = findMeetup.executeQuery();
+			
+			while (rs.next()) {
+				 id = rs.getInt("meetupID");
+				 gameID = rs.getInt("gameID");
+				 userID = rs.getInt("creatorID");
+				 capacity = rs.getInt("capacity");
+				 playerNum = rs.getInt("currPlayers");
+				 location = rs.getString("location");
+				 meetTime = rs.getString("meetTime");
+				 frequency = rs.getString("frequency");
+				
+				ResultSet rs2 = null;
+				ResultSet rs3 = null;
+				
+				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
+				
+				rs2 = findGameName.executeQuery();
+				rs3 = findUsername.executeQuery();
+				
+				 gameName = rs2.getString("gameName");
+				 username = rs3.getString("username");
+				
+				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
+				//user add meetup
+				meets.add(meet);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		
 		return meets;
 	}
 
