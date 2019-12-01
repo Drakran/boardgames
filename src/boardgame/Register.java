@@ -48,8 +48,6 @@ public class Register extends HttpServlet {
 			registerError = "The passwords don't match partner";
 		}else if (userExist == 2) {
 			forwardUrl = "/homepage.jsp";
-			session.setAttribute("connected", "true");
-			session.setAttribute("username", username);
 		}else if(userExist == 3) {
 			registerError = "No username put";
 		}else if(userExist == 4) {
