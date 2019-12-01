@@ -60,7 +60,6 @@ public class Login extends HttpServlet {
 		request.setAttribute("loginError", loginError);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);
-		
 	}
 
 	/**

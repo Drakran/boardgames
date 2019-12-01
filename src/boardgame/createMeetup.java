@@ -42,9 +42,6 @@ public class createMeetup extends HttpServlet {
 		accessData access = new accessData();
 		User user = (User) session.getAttribute("userObject");
 		access.createMeetup(user, gameName, capacity, location, meetTime, frequency);
-	
-		
-		
 		request.setAttribute("createMeetupError", createMeetupError);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);

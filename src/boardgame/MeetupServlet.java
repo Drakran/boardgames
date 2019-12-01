@@ -38,12 +38,10 @@ public class MeetupServlet extends HttpServlet {
 			
 		}
 		else {
-			
+			//method to call meetups
+			User user = (User)session.getAttribute("userObject");
+			session.setAttribute("meetupArray", access.getMeetupResults(user));
 		}
-		
-	
-		
-		
 		request.setAttribute("createMeetupError", createMeetupError);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);

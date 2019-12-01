@@ -59,8 +59,8 @@
 				placeholder="Enter how often you'd like to meet">
 		</div>
 		<div class="form-group">
-			<label for="description">Description</label> <input
-				type="text" name ="description" class="form-control" id="description"
+			<label for="description">Capacity</label> <input
+				type="number" name ="capacity" class="form-control" id="description"
 				placeholder="Enter a description for this meetup">
 		</div>
 		<div class="form-group">
