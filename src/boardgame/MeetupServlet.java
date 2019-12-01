@@ -35,12 +35,12 @@ public class MeetupServlet extends HttpServlet {
 		String username = (String) session.getAttribute("username");
 		accessData access = new accessData();
 		if(username == null || username == "") {
-			
+			request.setAttribute("meetupArray", access.getAllMeetups());
 		}
 		else {
 			//method to call meetups
 			User user = (User)session.getAttribute("userObject");
-			session.setAttribute("meetupArray", access.getMeetupResults(user));
+			request.setAttribute("meetupArray", access.getMeetupResults(user));
 		}
 		request.setAttribute("createMeetupError", createMeetupError);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);

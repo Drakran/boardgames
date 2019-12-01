@@ -18,7 +18,7 @@
 
 <script>
 	$.ajax({
-		url: "MeetUp",
+		url: "MeetupServlet",
 		method: "GET"
 	})
 </script>
