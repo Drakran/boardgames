@@ -312,15 +312,14 @@ public class accessData {
 	/**
 	 * 
 	 */
-	public void createMeetup(User user, String, gameName, String capacity, String location, String meetTime, String frequency) {
+	public void createMeetup(User user, String gameName, String capacity, String location, String meetTime, String frequency) {
 		open();
 		
 		try {
 			// initialize sql prepared statements 
 			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID from games WHERE gameName = ?");
 			PreparedStatement findCreatorSQL = conn.prepareStatement("SELECT userID from games WHERE username = ?");
-			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, 
-									 meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
+			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
 			String gameID = "";
 			String creatorID = "";
 
@@ -332,7 +331,7 @@ public class accessData {
 			}
 	
 			// set prepared values, query for info, set result in creatorID
-			findCreatorSQL.setString(1, user.getUsername);
+			findCreatorSQL.setString(1, user.getUsername());
 			rs = findCreatorSQL.executeQuery();
 			if (rs.next()) {
 				creatorID = rs.getString("userID");

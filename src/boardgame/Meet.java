@@ -34,5 +34,77 @@ public class Meet {
 		this.frequency = frequency;
 		this.description = description;
 	}
+
+	public int getMeetupID() {
+		return meetupID;
+	}
+
+	public void setMeetupID(int meetupID) {
+		this.meetupID = meetupID;
+	}
+
+	public int getGameID() {
+		return gameID;
+	}
+
+	public void setGameID(int gameID) {
+		this.gameID = gameID;
+	}
+
+	public int getCreatorID() {
+		return creatorID;
+	}
+
+	public void setCreatorID(int creatorID) {
+		this.creatorID = creatorID;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public int getCurrPlayers() {
+		return currPlayers;
+	}
+
+	public void setCurrPlayers(int currPlayers) {
+		this.currPlayers = currPlayers;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getMeetTime() {
+		return meetTime;
+	}
+
+	public void setMeetTime(String meetTime) {
+		this.meetTime = meetTime;
+	}
+
+	public String getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(String frequency) {
+		this.frequency = frequency;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 }
