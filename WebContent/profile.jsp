@@ -22,7 +22,9 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
-	<a class="navbar-brand" href="homepage.jsp">LOGO</a>
+	<a class="navbar-brand" href="homepage.jsp">
+		<img src = "assets/bgt_64.png" alt = "">
+	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
 		aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>

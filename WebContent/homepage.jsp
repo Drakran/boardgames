@@ -18,22 +18,21 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="#">LOGO</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarText" aria-controls="navbarText"
-			aria-expanded="false" aria-label="Toggle navigation">
+		<a class="navbar-brand" href="homepage.jsp">
+			<img src="assets/bgt_64.png" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="homepage.jsp">Home </a></li>
+				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
-				<li class="nav-item"><a class="nav-link" href="#"><i
-						class="fas fa-search"></i></a></li>
-				<li class="nav-item"><a class="nav-link" href="profile.jsp"><i
-						class="far fa-user"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="profile.jsp"><i class="far fa-user"></i></a></li>
 			</ul>
 		</div>
 	</nav>
