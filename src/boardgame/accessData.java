@@ -347,9 +347,9 @@ public class accessData {
 		
 		try {
 			// initialize sql prepared statements 
-			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID from games WHERE gameName = ?");
+			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID FROM games WHERE gameName = ?");
 			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
-			PreparedStatement findMeetup = conn.prepareStatement("SELECT meetupID from meetups WHERE gameID = ? AND capacity = ? AND currPlayers = 1 AND location = ? AND meetTime = ? AND frequency = ? AND creatorID = ?");
+			PreparedStatement findMeetup = conn.prepareStatement("SELECT meetupID FROM meetups WHERE gameID = ? AND capacity = ? AND currPlayers = 1 AND location = ? AND meetTime = ? AND frequency = ? AND creatorID = ?");
 			int gameID = -1;
 
 			// set prepared values, query for info, set result in gameID
@@ -403,12 +403,71 @@ public class accessData {
 			List<Game> wish = user.getWish();
 			
 			// make sql string
-			String sql = "SELECT * from meetups WHERE 1 = 1";
+			String sql = "SELECT * FROM meetups WHERE 1 = 1";
 			for(Game game : wish) {
 				sql += " AND gameID = " + game.getGameID();
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);
+			int id;
+			int gameID;
+			int userID;
+			int capacity;
+			int playerNum;
+			String location;
+			String meetTime;
+			String frequency;
+			String gameName;
+			String username;
+			
+			rs = findMeetup.executeQuery();
+			
+			while (rs.next()) {
+				 id = rs.getInt("meetupID");
+				 gameID = rs.getInt("gameID");
+				 userID = rs.getInt("creatorID");
+				 capacity = rs.getInt("capacity");
+				 playerNum = rs.getInt("currPlayers");
+				 location = rs.getString("location");
+				 meetTime = rs.getString("meetTime");
+				 frequency = rs.getString("frequency");
+				
+				ResultSet rs2 = null;
+				ResultSet rs3 = null;
+				
+				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
+				
+				rs2 = findGameName.executeQuery();
+				rs3 = findUsername.executeQuery();
+				
+				 gameName = rs2.getString("gameName");
+				 username = rs3.getString("username");
+				
+				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
+				//user add meetup
+				meets.add(meet);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return meets;
+	}
+	
+	public List<Meet> getAllMeetups() {
+		//Select all meetups that have a join statement with wish and gameID of meetup
+		List<Meet> meets = null;
+		
+		open();
+		
+		try {
+			// get wish list from user
+			List<Game> wish = user.getWish();
+			
+			// make sql string
+			PreparedStatement findMeetup = conn.prepareStatement("SELECT * FROM meetups");
 			int id;
 			int gameID;
 			int userID;
