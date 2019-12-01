@@ -52,7 +52,7 @@
 
 	<h2 class="orange">My Meetups</h2>
 	<table>
-		<thead>
+		<thead class="tableHead">
 			<tr>
 				<th>Name</th>
 				<th>Location</th>
@@ -60,7 +60,7 @@
 				<th>Frequency</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="tableBody">
 		<%
 		List<Meet> meetList = (ArrayList<Meet>) request.getAttribute("meetList");
 		for(int i=0; i<meetList.size(); i++){ %>	
@@ -76,7 +76,7 @@
 
 	<h2 class="orange">My Games</h2>
 	<table>
-		<tbody>
+		<tbody class="tableBody">
 		<%
 		List<Game> ownList = (ArrayList<Game>)request.getAttribute("ownList");
 		for(int i=0; i<ownList.size(); i++){ %>	
@@ -87,7 +87,7 @@
 
 	<h2 class="orange">My Wishlist</h2>
 	<table>
-		<tbody>
+		<tbody class="tableBody">
 		<%
 		List<Game> wishList = (ArrayList<Game>)request.getAttribute("wishList");
 		for(int i=0; i<wishList.size(); i++){ %>	
