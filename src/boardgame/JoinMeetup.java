@@ -32,10 +32,10 @@ public class JoinMeetup extends HttpServlet {
 		HttpSession session = request.getSession();
 		System.out.println("print1: "+request.getSession().getId());
 		String forwardUrl = "/MeetupServlet";
-		String gameID = request.getParameter("gameID");
-		String location = request.getParameter("location");
+		int meetupID = Integer.valueOf(request.getParameter("meetupID"));
 		accessData access = new accessData();
 		User user = (User) session.getAttribute("userObject");
+		access.joinMeetup(user, meetupID);
 //		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
 //        dispatch.forward(request, response);
 		

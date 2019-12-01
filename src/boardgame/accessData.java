@@ -393,6 +393,19 @@ public class accessData {
 		}
 	}
 	
+	public void joinMeetup(User user, int meetupID) {
+		try {
+			PreparedStatement joinSQL = conn.prepareStatement("INSERT INTO usersMeetup(meetupID,userID) VALUES(?,?)");
+			joinSQL.setInt(1,meetupID);
+			joinSQL.setInt(2, user.getID());
+			joinSQL.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	public List<Meet> getMeetupResults(User user) {
 		//Select all meetups that have a join statement with wish and gameID of meetup
 		List<Meet> meets = new ArrayList<>();
