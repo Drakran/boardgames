@@ -37,9 +37,11 @@ public class createMeetup extends HttpServlet {
 		String gameName = request.getParameter("gameName");
 		String meetTime = request.getParameter("meetTime");
 		String frequency = request.getParameter("frequency");
-		String description = request.getParameter("description");
+		String capacity = request.getParameter("capacity");
 		String location = request.getParameter("location");
 		accessData access = new accessData();
+		User user = (User) session.getAttribute("userObject");
+		access.createMeetup(user, gameName, capacity, location, meetTime, frequency);
 	
 		
 		

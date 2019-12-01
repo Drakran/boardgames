@@ -52,6 +52,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("ownList", user.getOwned());
 			session.setAttribute("wishList", user.getWish());
 			session.setAttribute("meetList", user.getMeetups());
+			session.setAttribute("userObject", user);
 		}
 		else {
 			//Shouldn't be here, like the method only returns 0,1,or 2. So probably userExist never set
