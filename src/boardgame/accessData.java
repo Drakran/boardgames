@@ -320,6 +320,7 @@ public class accessData {
 			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID from games WHERE gameName = ?");
 			PreparedStatement findCreatorSQL = conn.prepareStatement("SELECT userID from games WHERE username = ?");
 			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
+			PreparedStatement findMeetup = conn.prepareStatement("SELECT meetupID from meetups WHERE gameID = ? AND capacity = ? AND currPlayers = 1 AND location = ? AND meetTime = ? AND frequency = ? AND creatorID = ?");
 			String gameID = "";
 			String creatorID = "";
 
@@ -345,6 +346,22 @@ public class accessData {
 			insertSQL.setString(5, frequency);
 			insertSQL.setString(6, creatorID);
 			insertSQL.execute();
+			
+			// set prepared values, query to get meetupID
+			findMeetup.setString(1, gameID);
+			findMeetup.setString(2, capacity);
+			findMeetup.setString(3, location);
+			findMeetup.setString(4, meetTime);
+			findMeetup.setString(5, frequency);
+			findMeetup.setString(6, creatorID);
+			rs = findMeetup.executeQuery();
+			
+			// create Meet object and add to User's meetups list
+			if (rs.next()) {
+				int id = rs.getInt("meetupID");
+				Meet meet = new Meet(id, gameID, creatorID, capacity, 1, location, meetTime, frequency);
+				user.add(meet);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
