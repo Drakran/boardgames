@@ -416,7 +416,7 @@ public class accessData {
 				
 				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
 				//user add meetup
-				user.addMeet(meet);
+				meets.add(meet);
 			}
 			
 			
