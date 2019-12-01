@@ -441,8 +441,13 @@ public class accessData {
 				rs2 = findGameName.executeQuery();
 				rs3 = findUsername.executeQuery();
 				
-				 gameName = rs2.getString("gameName");
-				 username = rs3.getString("username");
+				if (rs2.next()) {
+					gameName = rs2.getString("gameName");
+				}
+				
+				if (rs3.next()) {
+					username = rs3.getString("username");
+				}
 				
 				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
 				//user add meetup
@@ -497,10 +502,15 @@ public class accessData {
 
 				rs2 = findGameName.executeQuery();
 				rs3 = findUsername.executeQuery();
-
-				gameName = rs2.getString("gameName");
-				username = rs3.getString("username");
-
+				
+				if (rs2.next()) {
+					gameName = rs2.getString("gameName");
+				}
+				
+				if (rs3.next()) {
+					username = rs3.getString("username");
+				}
+				
 				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
 				//user add meetup
 				meets.add(meet);
