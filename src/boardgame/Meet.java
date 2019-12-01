@@ -101,12 +101,4 @@ public class Meet {
 		this.frequency = frequency;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 }

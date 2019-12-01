@@ -312,7 +312,7 @@ public class accessData {
 	/**
 	 * 
 	 */
-	public void createMeetup(User user, String gameName, String capacity, String location, String meetTime, String frequency) {
+	public void createMeetup(User user, String gameName, int capacity, String location, String meetTime, String frequency) {
 		open();
 		
 		try {
@@ -331,27 +331,27 @@ public class accessData {
 			
 			// set prepared values, insert into database
 			insertSQL.setString(1, gameID);
-			insertSQL.setString(2, capacity);
+			insertSQL.setInt(2, capacity);
 			insertSQL.setString(3, location);
 			insertSQL.setString(4, meetTime);
 			insertSQL.setString(5, frequency);
-			insertSQL.setString(6, user.getID());
+			insertSQL.setInt(6, user.getID());
 			insertSQL.execute();
 			
 			// set prepared values, query to get meetupID
 			findMeetup.setString(1, gameID);
-			findMeetup.setString(2, capacity);
+			findMeetup.setInt(2, capacity);
 			findMeetup.setString(3, location);
 			findMeetup.setString(4, meetTime);
 			findMeetup.setString(5, frequency);
-			findMeetup.setString(6, user.getID());
+			findMeetup.setInt(6, user.getID());
 			rs = findMeetup.executeQuery();
 			
 			// create Meet object and add to User's meetups list
 			if (rs.next()) {
 				int id = rs.getInt("meetupID");
-				Meet meet = new Meet(id, gameID, user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
-				user.add(meet);
+				Meet meet = new Meet(id, Integer.parseInt(gameID), user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
+				//user add meetup
 			}
 			
 		} catch (SQLException e) {
