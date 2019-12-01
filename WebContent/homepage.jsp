@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import = "java.util.List, java.util.ArrayList, boardgame.Meet"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +15,23 @@
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <title>Board Game Tinder</title>
+
+<script>
+	$.ajax({
+		url: "MeetUp",
+		method: "GET"
+	})
+</script>
+
+<%
+	List<Meet> list = (ArrayList<Meet>) request.getAttribute("meetupArray");
+%>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="homepage.jsp">
-			<img src="assets/bgt_64.png" alt="">
+		<a href="homepage.jsp">
+			<img src=" assets/bgt_64.png" alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
 			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +67,16 @@
 		}
 	%>
 	<h1>ALL EXISTING MEETUPS</h1>
-	<p>TODO</p>
+	<% 
+		if(list != null) {
+		int rows = list.size();
+		if(rows > 10) { rows =10; }
+		for(int i = 0; i < rows; i++) {
+		%>	 
+	<p><%=list.get(i)%></p>
+
+	<% 		}
+		} %>
 	</div>
 	<!-- HTML here  -->
 	<script src="libraries/jquery-3.4.1.slim.min.js"></script>
