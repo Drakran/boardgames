@@ -1,7 +1,6 @@
 body {
 	background-color: #041835;
 	font-family: 'Montserrat', sans-serif;
-	color: white;
 }
 nav {
 	background-color: #a9d2e9;
@@ -10,3 +9,40 @@ nav {
 .orange {
 	color: #ffb05f;
 }
+
+h1 {
+	color: #ffb05f;
+}
+
+p {
+	color: #a9d2e9;
+}
+
+.btn-20 {
+	width: 20vw;
+}
+ 
+.mt-5 {
+	margin-top: 5vh !important;
+}
+
+.mt-10 {
+	margin-top: 10vh !important;
+}
+
+.mt-20 {
+	margin-top: 20vh !important;
+}
+
+.mb-5 {
+	margin-bottom: 5vh !important;
+}
+
+.mb-10 {
+	margin-bottom: 10vh !important;
+}
+
+.mb-20 {
+	margin-bottom: 20vh !important;
+}
+  
