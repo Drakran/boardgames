@@ -352,6 +352,7 @@ public class accessData {
 				int id = rs.getInt("meetupID");
 				Meet meet = new Meet(id, Integer.parseInt(gameID), user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
 				//user add meetup
+				user.addMeet(meet);
 			}
 			
 		} catch (SQLException e) {
