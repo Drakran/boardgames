@@ -31,7 +31,7 @@ public class Signout extends HttpServlet {
     	if(session != null)
     	    session.invalidate();
     	//request.getRequestDispatcher("/HomePage.jsp").forward(request,response);
-    	RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/homepage.jsp");
+    	RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/MeetupServlet");
     	dispatch.forward(request, response);
     }
 
