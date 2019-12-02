@@ -1,5 +1,6 @@
 package boardgame;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -16,7 +17,7 @@ public class User {
 	private String username;
 	private String password;
 	private int id;
-	private List<Meet> meetups = new ArrayList<>();
+	private List<Meet> meetups = new LinkedList<>();
 	private List<Game> owned = new ArrayList<>();
 	private List<Game> wish = new ArrayList<>();
 
@@ -92,6 +93,25 @@ public class User {
 	
 	public void addMeet(Meet meet) {
 		meetups.add(meet);
+	}
+	
+	public void removeMeet(Meet meet) {
+		for(int i = 0; i < meetups.size(); i++) {
+			if(meetups.get(i).getMeetupID() == meet.getMeetupID()) {
+				meetups.remove(i);
+				break;
+			}
+		}
+	}
+	
+	public boolean checkMeet(Meet meet) {
+		boolean isIn = false;
+		for(Meet meets: meetups) {
+			if(meets.getMeetupID() == meet.getMeetupID()) {
+				return true;
+			}
+		}
+		return isIn;
 	}
 	
 

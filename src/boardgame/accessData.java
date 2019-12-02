@@ -447,6 +447,28 @@ public class accessData {
 			joinSQL.setInt(1,meetupID);
 			joinSQL.setInt(2, user.getID());
 			joinSQL.executeUpdate();
+			ResultSet otherRS;
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,meetupID);
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.addMeet(m);
+				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -462,6 +484,28 @@ public class accessData {
 			rSQL.setInt(1,meetupID);
 			rSQL.setInt(2, user.getID());
 			rSQL.executeUpdate();
+			ResultSet otherRS;
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,meetupID);
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.removeMeet(m);
+				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

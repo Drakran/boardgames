@@ -119,5 +119,9 @@ public class Meet {
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
 	}
+	
+	public String getImage() {
+		return image;
+	}
 
 }
