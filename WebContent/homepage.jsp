@@ -153,12 +153,12 @@
 			<%
 				if (user.checkMeet(meet)) {
 			%>
-			<a id=meetup <%=meet.getMeetupID()%> class="btn btn-secondary btn-20"
+			<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20"
 				role="button" onClick="meetupRemove(this.id)">REMOVE</a>
 			<%
 				} else {
 			%>
-			<a id=meetup <%=meet.getMeetupID()%> class="btn btn-secondary btn-20"
+			<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20"
 				role="button" onClick="meetupJoin(this.id)">JOIN</a>
 
 			<%
