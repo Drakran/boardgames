@@ -532,7 +532,7 @@ public class accessData {
 				for(Game game : wish) {
 					sql += " OR gameID = " + game.getGameID();
 				}
-				sql += ") AND creatorID <> " + user.getID();
+				sql += ") AND creatorID <> " + user.getID() + " ORDER BY meetupID DESC";
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);
@@ -598,7 +598,7 @@ public class accessData {
 		try {
 			
 			// make sql string
-			PreparedStatement findMeetup = conn.prepareStatement("SELECT * FROM meetups");
+			PreparedStatement findMeetup = conn.prepareStatement("SELECT * FROM meetups ORDER BY meetupID DESC");
 			int id;
 			int gameID;
 			int userID;

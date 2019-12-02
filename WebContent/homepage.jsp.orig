@@ -18,7 +18,13 @@
 <link rel="stylesheet" type="text/css" href="styles/form.css">
 <title>Board Game Meet</title>
 
+<<<<<<< HEAD
+<script>
 
+</script>	
+
+=======
+>>>>>>> a5d4d494721d7e78843bafb2195b6df4aefa3426
 <%
 	List<Meet> list = (ArrayList<Meet>) request.getAttribute("meetupArray");
 	User user = (User) session.getAttribute("userObject");
@@ -35,41 +41,61 @@
 </style>
 </head>
 <body>
-		<nav class="navbar navbar-expand-lg navbar-light">
-				<a href="MeetupServlet"> <img id="logo" src=" assets/bgt_64.png"
-					alt="">
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarText" aria-controls="navbarText"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item"><a class="nav-link" href="MeetupServlet">Home
-						</a></li>
-						<li class="nav-item active"><a class="nav-link" href="Profile">Profile
-						</a></li>
-					</ul>
-					<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
-						<li class="nav-item"><a class="nav-link"
-							href="https://www.google.com/" target="_blank"><i
-								class="fas fa-search icon"></i></a></li>
-						<li class="nav-item"><a class="nav-link" href="Profile"><i
-								class="far fa-user icon"></i></a></li>
-		
-						<%
-							if (username != null && !username.isEmpty()) {
-						%>
-						<li class="nav-item"><a class="nav-link" href="Signout"><i
-								class="fas fa-sign-out-alt icon"></i></a></li>
-						<%
-							}
-						%>
-					</ul>
-				</div>
-			</nav>
+	<nav class="navbar navbar-expand-lg navbar-light">
+<<<<<<< HEAD
+		<a href="MeetupServlet">
+			<img src="assets/bgt_64.png" alt="">
+=======
+		<a href="MeetupServlet"> <img id="logo" src=" assets/bgt_64.png"
+			alt="">
+>>>>>>> a5d4d494721d7e78843bafb2195b6df4aefa3426
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarText" aria-controls="navbarText"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="MeetupServlet">Home </a></li>
+				<li class="nav-item"><a class="nav-link" href="Profile">Profile
+				</a></li>
+			</ul>
+			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
+				<li class="nav-item"><a class="nav-link"
+					href="https://www.google.com/" target="_blank"><i
+						class="fas fa-search icon"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="Profile"><i
+						class="far fa-user icon"></i></a></li>
+
+				<%
+					if (username != null && !username.isEmpty()) {
+				%>
+				<li class="nav-item"><a class="nav-link" href="Signout"><i
+						class="fas fa-sign-out-alt icon"></i></a></li>
+				<%
+					}
+				%>
+			</ul>
+		</div>
+	</nav>
 	<div class="text-center mt-20">
+<<<<<<< HEAD
+	<h1>BOARD GAME MEET</h1>
+	<p>Make new friends with people who enjoy playing board games!</p>
+	<p>Learn to play a new game with a welcoming community of friends</p>
+	<%
+		if(username != null && !username.isEmpty()) {
+	%>
+	<div class = "mt-5 mb-5">
+		<a class="btn btn-primary btn-20 btn-solid" href="meetup-creation.jsp" role="button">CREATE</a>
+	</div>
+	<%
+		}
+	%>
+	<h1>MEETUPS</h1>
+=======
 		<h1 id="title">BOARD GAME MEET</h1>
 		<p>Make new friends with people who enjoy playing board games!</p>
 		<p>Learn to play a new game with a welcoming community of friends</p>
@@ -107,6 +133,7 @@
 					$(meetNameID).html("REMOVE");
 				});
 			}
+>>>>>>> a5d4d494721d7e78843bafb2195b6df4aefa3426
 
 			function meetupRemove(meetupID) {
 				var meetName = meetupID;
