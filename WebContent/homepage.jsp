@@ -67,6 +67,7 @@
 
 <script type="text/javascript">
 	function meetupJoin(meetupID) {
+		document.getElementById(meetupID).style.display="none";
 		meetupID = meetupID.replace("meetup", "");
 		$.ajax({
 			method: "GET",
@@ -75,6 +76,7 @@
 		})
 		.success(function(data){
 			console.log("hi");
+			document.getElementById("meetup"+meetupID).style.display="none";
 			});
 		}
 </script>

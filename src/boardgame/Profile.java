@@ -42,7 +42,6 @@ public class Profile extends HttpServlet {
 
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);
-		
 	}
 
 	/**
