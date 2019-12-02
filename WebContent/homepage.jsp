@@ -42,7 +42,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="homepage.jsp">Home </a></li>
+				<li class="nav-item active"><a class="nav-link" href="MeetupServlet">Home </a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
 				<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
