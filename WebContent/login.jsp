@@ -29,7 +29,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="homepage.jsp">Home
+				<li class="nav-item active"><a class="nav-link" href="MeetupServlet">Home
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
 			</ul>
