@@ -113,9 +113,7 @@ if(session!=null) {
 				</div>
 				<div class="row">
 					<h5>
-						Players: <span>lllllll</span>
-						<%=meetList.get(i).getCurrPlayers()%>
-						out of
+						Max Players: <span>lllllll</span>
 						<%=meetList.get(i).getCapacity()%></h5>
 				</div>
 			</div>
