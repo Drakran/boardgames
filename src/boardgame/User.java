@@ -17,7 +17,7 @@ public class User {
 	private String username;
 	private String password;
 	private int id;
-	private List<Meet> meetups = new LinkedList<>();
+	private List<Meet> meetups = new ArrayList<>();
 	private List<Game> owned = new ArrayList<>();
 	private List<Game> wish = new ArrayList<>();
 
