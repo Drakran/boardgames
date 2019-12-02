@@ -15,7 +15,7 @@
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/form.css">
-<title>Board Game Tinder</title>
+<title>Board Game Meet</title>
 
 <script>
 
@@ -42,7 +42,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="homepage.jsp">Home </a></li>
+				<li class="nav-item active"><a class="nav-link" href="MeetupServlet">Home </a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
 				<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
@@ -51,7 +51,7 @@
 		</div>
 	</nav>
 	<div class="text-center mt-20">
-	<h1>BOARD GAME TINDER</h1>
+	<h1>BOARD GAME MEET</h1>
 	<p>Make new friends with people who enjoy playing board games!</p>
 	<p>Learn to play a new game with a welcoming community of friends</p>
 	<%
