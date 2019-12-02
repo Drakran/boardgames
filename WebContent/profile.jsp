@@ -121,7 +121,7 @@ if(session!=null) {
 			</div>
 
 			<div class="col">
-				<img src="<%=meetList.get(i).getImage()%>" />
+				<img class = "game-img" src="<%=meetList.get(i).getImage()%>" />
 			</div>
 		</div>
 		<%
