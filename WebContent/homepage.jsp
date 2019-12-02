@@ -27,11 +27,16 @@
 		username = (String) session.getAttribute("username");
 	}
 %>
-
+<style>
+#title {
+	font-size: 60px;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a href="MeetupServlet"> <img id="logo" src=" assets/bgt_64.png" alt="">
+		<a href="MeetupServlet"> <img id="logo" src=" assets/bgt_64.png"
+			alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarText" aria-controls="navbarText"
@@ -64,7 +69,7 @@
 		</div>
 	</nav>
 	<div class="text-center mt-20">
-		<h1>BOARD GAME MEET</h1>
+		<h1 id="title">BOARD GAME MEET</h1>
 		<p>Make new friends with people who enjoy playing board games!</p>
 		<p>Learn to play a new game with a welcoming community of friends</p>
 		<%
@@ -74,11 +79,14 @@
 			<a class="btn btn-primary btn-20 btn-solid"
 				href="meetup-creation.jsp" role="button">CREATE</a>
 		</div>
+		<h1>ALL JOINABLE MEETUPS</h1>
+		<%
+			} else {
+		%>
+		<h1>ALL MEETUPS</h1>
 		<%
 			}
 		%>
-		<h1>ALL EXISTING MEETUPS</h1>
-
 		<script type="text/javascript">
 			function meetupJoin(meetupID) {
 				var meetName = meetupID;
