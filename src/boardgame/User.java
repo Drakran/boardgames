@@ -94,5 +94,24 @@ public class User {
 		meetups.add(meet);
 	}
 	
+	public void removeMeet(Meet meet) {
+		for(int i = 0; i < meetups.size(); i++) {
+			if(meetups.get(i).getMeetupID() == meet.getMeetupID()) {
+				meetups.remove(i);
+				break;
+			}
+		}
+	}
+	
+	public boolean checkMeet(Meet meet) {
+		boolean isIn = false;
+		for(Meet meets: meetups) {
+			if(meets.getMeetupID() == meet.getMeetupID()) {
+				return true;
+			}
+		}
+		return isIn;
+	}
+	
 
 }
