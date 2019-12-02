@@ -36,12 +36,14 @@ span {
 }
 </style>
 </head>
-
+<%String username = (String) session.getAttribute("username"); %>
 
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="MeetupServlet">LOGO</a>
+		<a href="MeetupServlet"> <img id="logo" src=" assets/bgt_64.png"
+			alt="">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarText" aria-controls="navbarText"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -49,20 +51,30 @@ span {
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="MeetupServlet">Home </a></li>
-				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
+				<li class="nav-item"><a class="nav-link" href="MeetupServlet">Home
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="Profile">Profile
+				</a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
-				<li class="nav-item"><a class="nav-link" href="games.jsp"><i
-						class="fas fa-search"></i></a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="https://www.google.com/" target="_blank"><i
+						class="fas fa-search icon"></i></a></li>
 				<li class="nav-item"><a class="nav-link" href="Profile"><i
-						class="far fa-user"></i></a></li>
+						class="far fa-user icon"></i></a></li>
+
+				<%
+					if (username != null && !username.isEmpty()) {
+				%>
+				<li class="nav-item"><a class="nav-link" href="Signout"><i
+						class="fas fa-sign-out-alt icon"></i></a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 	</nav>
 	<%
-		String username = (String) session.getAttribute("username");
 		if (username == null) {
 	%>
 	<div class="mt-5 mb-5">
@@ -112,7 +124,9 @@ span {
 				<div class="row">
 					<h5>
 						Players: <span>lllllll</span>
-						<%=meetList.get(i).getCurrPlayers()%> out of <%=meetList.get(i).getCapacity()%></h5>
+						<%=meetList.get(i).getCurrPlayers()%>
+						out of
+						<%=meetList.get(i).getCapacity()%></h5>
 				</div>
 			</div>
 
