@@ -33,7 +33,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a href="homepage.jsp">
+		<a href="MeetupServlet">
 			<img src=" assets/bgt_64.png" alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -59,7 +59,6 @@
 	%>
 	<div class = "mt-5 mb-5">
 		<a class="btn btn-primary btn-20 btn-solid" href="meetup-creation.jsp" role="button">CREATE</a>
-		<a class="btn btn-outline-primary btn-20 btn-hollow" href="#" role="button">JOIN</a>
 	</div>
 	<%
 		}
@@ -94,7 +93,7 @@
 			String id = "meetupID" + i; %>
 		<p><%=meet.getGameName()%></p>
 		<p><i class="fas fa-user"></i><%=meet.getCreatorUsername()%></p>
-		<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" href="#" role="button" onClick="meetupJoin(this.id)">JOIN</a>
+		<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" role="button" onClick="meetupJoin(this.id)">JOIN</a>
 		<% if(i!=rows-1) { %>
 		<hr>
 		<% } %>
