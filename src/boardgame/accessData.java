@@ -415,7 +415,21 @@ public class accessData {
 		}finally {
 			close();
 		}
-
+	}
+	
+	public void removeMeetup(User user, int meetupID) {
+		open();
+		try {
+			PreparedStatement rSQL = conn.prepareStatement("DELETE FROM usersMeetup WHERE meetupID = ? and userID = ?");
+			rSQL.setInt(1,meetupID);
+			rSQL.setInt(2, user.getID());
+			rSQL.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 	}
 	
 	public List<Meet> getMeetupResults(User user) {
