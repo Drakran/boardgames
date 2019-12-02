@@ -36,7 +36,10 @@ public class Profile extends HttpServlet {
 			request.setAttribute("meetList", user.getMeetups());
 			request.setAttribute("ownList", user.getOwned());
 			request.setAttribute("wishList", user.getWish());
+			accessData access = new accessData();
+			access.updateProfileUser(user);
 		}
+
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);
 		

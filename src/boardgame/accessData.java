@@ -402,6 +402,44 @@ public class accessData {
 		}
 	}
 	
+	public void updateProfileUser(User user) {
+		open();
+		user.getMeetups().clear();
+		try {
+			PreparedStatement findMeet = conn.prepareStatement("SELECT * from usersMeetup WHERE userID = ?");
+			findMeet.setInt(1,user.getID());
+			rs = findMeet.executeQuery();
+			ResultSet otherRS;
+			while(rs.next()) {
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,rs.getInt("meetupID"));
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.addMeet(m);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close();
+	}
+	
 	public void joinMeetup(User user, int meetupID) {
 		open();
 		try {
@@ -446,10 +484,11 @@ public class accessData {
 			String sql = "SELECT * FROM meetups";
 			
 			if (!wish.isEmpty()) {
-				sql += " WHERE 1 = 2";
+				sql += " WHERE ( 1 = 2";
 				for(Game game : wish) {
 					sql += " OR gameID = " + game.getGameID();
 				}
+				sql += ") AND creatorID <> " + user.getID();
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);

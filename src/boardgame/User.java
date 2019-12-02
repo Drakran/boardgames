@@ -93,5 +93,6 @@ public class User {
 	public void addMeet(Meet meet) {
 		meetups.add(meet);
 	}
+	
 
 }
