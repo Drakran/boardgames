@@ -47,7 +47,7 @@ public class Register extends HttpServlet {
 		}else if (userExist == 1) {
 			registerError = "The passwords don't match partner";
 		}else if (userExist == 2) {
-			forwardUrl = "MeetupServlet";
+			forwardUrl = "/MeetupServlet";
 		}else if(userExist == 3) {
 			registerError = "No username put";
 		}else if(userExist == 4) {
