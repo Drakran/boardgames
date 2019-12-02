@@ -465,7 +465,7 @@ public class accessData {
 				ResultSet rs2 = null;
 				ResultSet rs3 = null;
 				
-				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findGameName = conn.prepareStatement("SELECT * FROM games WHERE gameID = " + gameID);
 				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
 				
 				rs2 = findGameName.executeQuery();
@@ -528,7 +528,7 @@ public class accessData {
 				ResultSet rs2 = null;
 				ResultSet rs3 = null;
 
-				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findGameName = conn.prepareStatement("SELECT * FROM games WHERE gameID = " + gameID);
 				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
 
 				rs2 = findGameName.executeQuery();
