@@ -1,6 +1,5 @@
 package boardgame;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,34 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Profile
+ * Servlet implementation class removeServlet
  */
-@WebServlet("/Profile")
-public class Profile extends HttpServlet {
+@WebServlet("/removeServlet")
+public class removeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Profile() {
+    public removeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
     
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String profileError = null;
-		HttpSession session = request.getSession();
-		String forwardUrl = "/profile.jsp";
+		//Get session
+		
+		HttpSession session = request.getSession(false);
+		String forwardUrl = "/MeetupServlet";
+		System.out.println(request.getParameter("id"));
+		int meetupID = Integer.valueOf(request.getParameter("id"));
+		accessData access = new accessData();
 		User user = (User) session.getAttribute("userObject");
-		if(user != null && user.getUsername() != "") {
-			request.setAttribute("meetList", user.getMeetups());
-			request.setAttribute("ownList", user.getOwned());
-			request.setAttribute("wishList", user.getWish());
-			accessData access = new accessData();
-			access.updateProfileUser(user);
-		}
-
+		access.removeMeetup(user, meetupID);
 		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(forwardUrl);
         dispatch.forward(request, response);
 	}

@@ -17,13 +17,13 @@ public class Meet {
 	private String frequency;
 	private String gameName;
 	private String creatorUsername;
-	
+	private String image;
 	public Meet() {
 		
 	}
 
 	public Meet(int meetupID, int gameID, int creatorID, int capacity, int currPlayers, String location,
-			String meetTime, String frequency, String gameName, String creatorUsername) {
+			String meetTime, String frequency, String gameName, String creatorUsername, String image) {
 		super();
 		this.meetupID = meetupID;
 		this.gameID = gameID;
@@ -35,6 +35,7 @@ public class Meet {
 		this.frequency = frequency;
 		this.gameName = gameName;
 		this.creatorUsername = creatorUsername;
+		this.image = image;
 	}
 	
 
@@ -117,6 +118,10 @@ public class Meet {
 
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
+	}
+	
+	public String getImage() {
+		return image;
 	}
 
 }

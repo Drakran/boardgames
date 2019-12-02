@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import = "java.util.List, java.util.ArrayList, boardgame.Meet"%>
+	pageEncoding="UTF-8" import = "java.util.List, java.util.ArrayList, boardgame.Meet, boardgame.User"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 	href="libraries/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/form.css">
-<title>Board Game Tinder</title>
+<title>Board Game Meet</title>
 
 <script>
 
@@ -23,6 +23,7 @@
 
 <%
 	List<Meet> list = (ArrayList<Meet>) request.getAttribute("meetupArray");
+	User user = (User) session.getAttribute("userObject"); 
 
 	String username = null;
 	if(session != null) {
@@ -51,7 +52,7 @@
 		</div>
 	</nav>
 	<div class="text-center mt-20">
-	<h1>BOARD GAME TINDER</h1>
+	<h1>BOARD GAME MEET</h1>
 	<p>Make new friends with people who enjoy playing board games!</p>
 	<p>Learn to play a new game with a welcoming community of friends</p>
 	<%
@@ -67,16 +68,42 @@
 
 <script type="text/javascript">
 	function meetupJoin(meetupID) {
+		var meetName = meetupID;
 		meetupID = meetupID.replace("meetup", "");
 		$.ajax({
 			method: "GET",
 			url: "JoinMeetup",
 			data: { id: meetupID}
 		})
-		.success(function(data){
-			console.log("hi");
-			});
-		}
+		.done(function(data){
+			var meetNameID = "#" + meetName;
+			console.log(meetNameID);
+			$(meetNameID).off('click').on('click',function(){
+				meetupRemove(meetName);
+			})
+			$(meetNameID).html("REMOVE");
+		});
+	}
+	
+	function meetupRemove(meetupID){
+		var meetName = meetupID;
+		meetupID = meetupID.replace("meetup", "");
+		$.ajax({
+			method: "GET",
+			url: "removeServlet",
+			data: { id: meetupID}
+		})
+		.done(function(data){
+			var meetNameID = "#" + meetName;
+			console.log(meetNameID);
+			$(meetNameID).off('click').on('click',function(){
+				meetupJoin(meetName);
+			})
+			$(meetNameID).html("JOIN");
+		});
+	}
+	
+
 </script>
 
 	<% 
@@ -93,7 +120,15 @@
 			String id = "meetupID" + i; %>
 		<p><%=meet.getGameName()%></p>
 		<p><i class="fas fa-user"></i><%=meet.getCreatorUsername()%></p>
-		<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" role="button" onClick="meetupJoin(this.id)">JOIN</a>
+		<%if(user != null){ %>
+		<%if(user.checkMeet(meet)) {%>
+			<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" role="button" onClick="meetupRemove(this.id)">REMOVE</a>
+		<%}else{ %>
+			<a id=meetup<%=meet.getMeetupID()%> class="btn btn-secondary btn-20" role="button" onClick="meetupJoin(this.id)">JOIN</a>
+		
+		<%} %>
+		<%} %>
+		
 		<% if(i!=rows-1) { %>
 		<hr>
 		<% } %>

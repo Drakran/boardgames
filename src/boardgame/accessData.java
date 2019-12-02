@@ -177,13 +177,14 @@ public class accessData {
 						otherOtherRS = findName.executeQuery();
 						otherOtherRS.next();
 						String gameName = otherOtherRS.getString("gameName");
+						String gameImage = otherOtherRS.getString("imgLink");
 						PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
 						findCreator.setInt(1, otherRS.getInt("creatorID"));
 						otherOtherRS = findCreator.executeQuery();
 						otherOtherRS.next();
 						String creatorName = otherOtherRS.getString("username");
 						Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
-								,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName);
+								,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
 						user.addMeet(m);
 					}
 				}
@@ -349,17 +350,18 @@ public class accessData {
 		
 		try {
 			// initialize sql prepared statements 
-			PreparedStatement findGameSQL = conn.prepareStatement("SELECT gameID FROM games WHERE gameName = ?");
+			PreparedStatement findGameSQL = conn.prepareStatement("SELECT * FROM games WHERE gameName = ?");
 			PreparedStatement insertSQL = conn.prepareStatement("INSERT INTO meetups (gameID, capacity, currPlayers, location, meetTime, frequency, creatorID) VALUES (?, ?, 1, ?, ?, ?, ?)");
 			PreparedStatement findMeetup = conn.prepareStatement("SELECT meetupID FROM meetups WHERE gameID = ? AND capacity = ? AND currPlayers = 1 AND location = ? AND meetTime = ? AND frequency = ? AND creatorID = ?");
 			PreparedStatement insertUserMeetup = conn.prepareStatement("INSERT INTO usersMeetup (meetupID, userID) VALUES (?, ?)");
 			int gameID = -1;
-
+			String gameImage = "";
 			// set prepared values, query for info, set result in gameID
 			findGameSQL.setString(1, gameName);
 			rs = findGameSQL.executeQuery();
 			if (rs.next()) {
 				gameID = rs.getInt("gameID");
+				gameImage = rs.getString("imgLink");
 			}
 			
 			// set prepared values, insert into database
@@ -388,7 +390,7 @@ public class accessData {
 				insertUserMeetup.setInt(2, user.getID());
 				insertUserMeetup.execute();
 				
-				Meet meet = new Meet(id, gameID, user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername());
+				Meet meet = new Meet(id, gameID, user.getID(), capacity, 1, location, meetTime, frequency, gameName, user.getUsername(), gameImage);
 				//user add meetup
 				user.addMeet(meet);
 			}
@@ -400,6 +402,44 @@ public class accessData {
 		}
 	}
 	
+	public void updateProfileUser(User user) {
+		open();
+		user.getMeetups().clear();
+		try {
+			PreparedStatement findMeet = conn.prepareStatement("SELECT * from usersMeetup WHERE userID = ?");
+			findMeet.setInt(1,user.getID());
+			rs = findMeet.executeQuery();
+			ResultSet otherRS;
+			while(rs.next()) {
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,rs.getInt("meetupID"));
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.addMeet(m);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		close();
+	}
+	
 	public void joinMeetup(User user, int meetupID) {
 		open();
 		try {
@@ -407,13 +447,71 @@ public class accessData {
 			joinSQL.setInt(1,meetupID);
 			joinSQL.setInt(2, user.getID());
 			joinSQL.executeUpdate();
+			ResultSet otherRS;
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,meetupID);
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.addMeet(m);
+				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
 		}
-
+	}
+	
+	public void removeMeetup(User user, int meetupID) {
+		open();
+		try {
+			PreparedStatement rSQL = conn.prepareStatement("DELETE FROM usersMeetup WHERE meetupID = ? and userID = ?");
+			rSQL.setInt(1,meetupID);
+			rSQL.setInt(2, user.getID());
+			rSQL.executeUpdate();
+			ResultSet otherRS;
+				PreparedStatement findMeetup = conn.prepareStatement("SELECT * from meetups WHERE meetupID = ?");
+				findMeetup.setInt(1,meetupID);
+				otherRS = findMeetup.executeQuery();
+				while(otherRS.next()) {
+					System.out.println("test inside accessData meetup");
+					ResultSet otherOtherRS; 
+					PreparedStatement findName = conn.prepareStatement("SELECT * from games WHERE gameID = ?");
+					findName.setInt(1, otherRS.getInt("gameID"));
+					otherOtherRS = findName.executeQuery();
+					otherOtherRS.next();
+					String gameName = otherOtherRS.getString("gameName");
+					String gameImage = otherOtherRS.getString("imgLink");
+					PreparedStatement findCreator = conn.prepareStatement("SELECT * from users WHERE userID = ?");
+					findCreator.setInt(1, otherRS.getInt("creatorID"));
+					otherOtherRS = findCreator.executeQuery();
+					otherOtherRS.next();
+					String creatorName = otherOtherRS.getString("username");
+					Meet m = new Meet(otherRS.getInt("meetupID"), otherRS.getInt("gameID"),otherRS.getInt("creatorID"), otherRS.getInt("capacity"), otherRS.getInt("currPlayers"),otherRS.getString("location")
+							,otherRS.getString("meetTime"),otherRS.getString("frequency"), gameName, creatorName, gameImage);
+					user.removeMeet(m);
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 	}
 	
 	public List<Meet> getMeetupResults(User user) {
@@ -430,10 +528,11 @@ public class accessData {
 			String sql = "SELECT * FROM meetups";
 			
 			if (!wish.isEmpty()) {
-				sql += " WHERE 1 = 2";
+				sql += " WHERE ( 1 = 2";
 				for(Game game : wish) {
 					sql += " OR gameID = " + game.getGameID();
 				}
+				sql += ") AND creatorID <> " + user.getID();
 			}
 			
 			PreparedStatement findMeetup = conn.prepareStatement(sql);
@@ -447,7 +546,7 @@ public class accessData {
 			String frequency;
 			String gameName = "";
 			String username = "";
-			
+			String gameImage = "";
 			rs = findMeetup.executeQuery();
 			
 			while (rs.next()) {
@@ -463,7 +562,7 @@ public class accessData {
 				ResultSet rs2 = null;
 				ResultSet rs3 = null;
 				
-				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findGameName = conn.prepareStatement("SELECT * FROM games WHERE gameID = " + gameID);
 				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
 				
 				rs2 = findGameName.executeQuery();
@@ -471,13 +570,14 @@ public class accessData {
 				
 				if (rs2.next()) {
 					gameName = rs2.getString("gameName");
+					gameImage = rs2.getString("imgLink");
 				}
 				
 				if (rs3.next()) {
 					username = rs3.getString("username");
 				}
 				
-				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
+				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username, gameImage);
 				//user add meetup
 				meets.add(meet);
 			}
@@ -509,7 +609,7 @@ public class accessData {
 			String frequency;
 			String gameName = "";
 			String username = "";
-			
+			String gameImage = "";
 			rs = findMeetup.executeQuery();
 			
 			while (rs.next()) {
@@ -525,7 +625,7 @@ public class accessData {
 				ResultSet rs2 = null;
 				ResultSet rs3 = null;
 
-				PreparedStatement findGameName = conn.prepareStatement("SELECT gameName FROM games WHERE gameID = " + gameID);
+				PreparedStatement findGameName = conn.prepareStatement("SELECT * FROM games WHERE gameID = " + gameID);
 				PreparedStatement findUsername = conn.prepareStatement("SELECT username FROM users WHERE userID = " + userID);
 
 				rs2 = findGameName.executeQuery();
@@ -533,13 +633,14 @@ public class accessData {
 				
 				if (rs2.next()) {
 					gameName = rs2.getString("gameName");
+					gameImage = rs2.getString("imgLink");
 				}
 				
 				if (rs3.next()) {
 					username = rs3.getString("username");
 				}
 				
-				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username);
+				Meet meet = new Meet(id, gameID, userID, capacity, playerNum, location, meetTime, frequency, gameName, username, gameImage);
 				//user add meetup
 				meets.add(meet);
 			}
