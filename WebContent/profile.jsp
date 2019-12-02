@@ -17,59 +17,37 @@
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="styles/form.css">
 <title>Profile</title>
-<style>
-img {
-	height: 250px;
-}
 
-.list {
-	border-bottom: 1px solid #89aee2;
-	padding: 50px;
-}
-
-h3 {
-	color: #89aee2;
-}
-
-span {
-	visibility: hidden;
-}
-</style>
 </head>
-
-
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="MeetupServlet">LOGO</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarText" aria-controls="navbarText"
-			aria-expanded="false" aria-label="Toggle navigation">
+		<a href="MeetupServlet">
+			<img src=" assets/bgt_64.png" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="MeetupServlet">Home </a></li>
-				<li class="nav-item"><a class="nav-link" href="#">BLAH</a></li>
+				<li class="nav-item active"><a class="nav-link" href="MeetupServlet">Home </a></li>
 			</ul>
 			<ul class="navbar-nav mr-auto" style="margin-right: 0 !important;">
-				<li class="nav-item"><a class="nav-link" href="games.jsp"><i
-						class="fas fa-search"></i></a></li>
-				<li class="nav-item"><a class="nav-link" href="Profile"><i
-						class="far fa-user"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="games.jsp"><i class="fas fa-search"></i></a></li>
+				<li class="nav-item"><a class="nav-link" href="Profile"><i class="far fa-user"></i></a></li>
 			</ul>
 		</div>
 	</nav>
+
 	<%
-		String username = (String) session.getAttribute("username");
-		if (username == null) {
+	String username = (String) session.getAttribute("username");
+	if (username == null) {
 	%>
-	<div class="mt-5 mb-5">
-		<a class="btn btn-primary btn-20 btn-solid" href="register.jsp"
-			role="button">Sign up</a> <a class="btn btn-secondary btn-20"
-			href="login.jsp" role="button">Log in</a>
-	</div>
+		<div class="mt-5 mb-5">
+			<a class="btn btn-primary btn-20" href="register.jsp" role="button">Sign up</a> 
+			<a class="btn btn-secondary btn-20"href="login.jsp" role="button">Log in</a>
+		</div>
 	<%
 		} else {
 	%>
